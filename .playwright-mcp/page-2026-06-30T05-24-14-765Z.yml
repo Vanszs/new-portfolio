@@ -1,0 +1,541 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "B Bevan." [ref=e5] [cursor=pointer]:
+        - /url: "#home"
+        - generic [ref=e8]: B
+        - generic [ref=e9]: Bevan.
+      - navigation [ref=e10]:
+        - link "Home" [ref=e11] [cursor=pointer]:
+          - /url: "#home"
+          - text: Home
+        - link "Services" [ref=e13] [cursor=pointer]:
+          - /url: "#services"
+        - link "About" [ref=e14] [cursor=pointer]:
+          - /url: "#about"
+        - link "Projects" [ref=e15] [cursor=pointer]:
+          - /url: "#projects"
+        - link "Blogs" [ref=e16] [cursor=pointer]:
+          - /url: "#blogs"
+        - link "Testimonials" [ref=e17] [cursor=pointer]:
+          - /url: "#testimonials"
+      - button "Contact Me" [ref=e19]
+  - main [ref=e20]:
+    - generic [ref=e21]:
+      - generic [ref=e22]:
+        - generic [ref=e25]: Hello There!
+        - heading "I'm Bevan" [level=1] [ref=e27]:
+          - text: I'm
+          - generic [ref=e28]:
+            - text: Bevan
+            - img [ref=e29]
+        - paragraph [ref=e31]: AI/ML Engineer | Full-Stack & Blockchain Developer based in Surabaya, Indonesia
+        - generic [ref=e32]:
+          - generic [ref=e33]:
+            - generic [ref=e34]:
+              - generic [ref=e35]: “
+              - paragraph [ref=e36]: Bevan's full-stack and AI execution accelerated our product delivery—highly recommended!
+            - generic [ref=e37] [cursor=pointer]:
+              - generic [ref=e38]:
+                - img "Valued Client" [ref=e39]
+                - img "Valued Client" [ref=e40]
+                - img "Valued Client" [ref=e41]
+                - img "Valued Client" [ref=e42]
+              - generic [ref=e43]:
+                - generic [ref=e44]:
+                  - generic [ref=e45]: 10+ Delivered Projects
+                  - generic [ref=e46]: (4.85/5)
+                - paragraph [ref=e47]: Trusted by cross-functional teams
+          - generic [ref=e48]:
+            - generic:
+              - img "Bevan Portrait"
+            - generic [ref=e49]:
+              - button "Portfolio" [ref=e50]:
+                - generic [ref=e51]: Portfolio
+                - img [ref=e53]
+              - button "Hire Me" [ref=e55]
+          - generic [ref=e56]:
+            - generic [ref=e57]:
+              - generic [ref=e58]: AI / ML
+              - generic [ref=e59]: Full-Stack
+              - generic [ref=e66]: Mobile Apps
+              - generic [ref=e67]: Blockchain
+              - generic [ref=e68]: Autonomous Systems
+            - generic [ref=e69]:
+              - generic [ref=e70]: Connect With Me
+              - generic [ref=e71]:
+                - link "Facebook" [ref=e72] [cursor=pointer]:
+                  - /url: "#"
+                  - img [ref=e73]
+                - link "X" [ref=e75] [cursor=pointer]:
+                  - /url: "#"
+                  - img [ref=e76]
+                - link "Pinterest" [ref=e78] [cursor=pointer]:
+                  - /url: "#"
+                  - img [ref=e79]
+                - link "Instagram" [ref=e81] [cursor=pointer]:
+                  - /url: "#"
+                  - img [ref=e82]
+      - generic [ref=e85]:
+        - img [ref=e86]:
+          - generic [ref=e87]: HIRE ME • HIRE ME • HIRE ME •
+        - img [ref=e89]
+    - generic [ref=e93]:
+      - generic [ref=e94]:
+        - generic [ref=e95]: AI / ML
+        - generic [ref=e96]: ✦
+      - generic [ref=e97]:
+        - generic [ref=e98]: Full-Stack Development
+        - generic [ref=e99]: ✦
+      - generic [ref=e100]:
+        - generic [ref=e101]: Blockchain
+        - generic [ref=e102]: ✦
+      - generic [ref=e103]:
+        - generic [ref=e104]: Autonomous Systems
+        - generic [ref=e105]: ✦
+      - generic [ref=e106]:
+        - generic [ref=e107]: IoT & Computer Vision
+        - generic [ref=e108]: ✦
+      - generic [ref=e109]:
+        - generic [ref=e110]: Mobile Apps
+        - generic [ref=e111]: ✦
+      - generic [ref=e112]:
+        - generic [ref=e113]: AI / ML
+        - generic [ref=e114]: ✦
+      - generic [ref=e115]:
+        - generic [ref=e116]: Full-Stack Development
+        - generic [ref=e117]: ✦
+      - generic [ref=e118]:
+        - generic [ref=e119]: Blockchain
+        - generic [ref=e120]: ✦
+      - generic [ref=e121]:
+        - generic [ref=e122]: Autonomous Systems
+        - generic [ref=e123]: ✦
+      - generic [ref=e124]:
+        - generic [ref=e125]: IoT & Computer Vision
+        - generic [ref=e126]: ✦
+      - generic [ref=e127]:
+        - generic [ref=e128]: Mobile Apps
+        - generic [ref=e129]: ✦
+      - generic [ref=e130]:
+        - generic [ref=e131]: AI / ML
+        - generic [ref=e132]: ✦
+      - generic [ref=e133]:
+        - generic [ref=e134]: Full-Stack Development
+        - generic [ref=e135]: ✦
+      - generic [ref=e136]:
+        - generic [ref=e137]: Blockchain
+        - generic [ref=e138]: ✦
+      - generic [ref=e139]:
+        - generic [ref=e140]: Autonomous Systems
+        - generic [ref=e141]: ✦
+      - generic [ref=e142]:
+        - generic [ref=e143]: IoT & Computer Vision
+        - generic [ref=e144]: ✦
+      - generic [ref=e145]:
+        - generic [ref=e146]: Mobile Apps
+        - generic [ref=e147]: ✦
+      - generic [ref=e148]:
+        - generic [ref=e149]: AI / ML
+        - generic [ref=e150]: ✦
+      - generic [ref=e151]:
+        - generic [ref=e152]: Full-Stack Development
+        - generic [ref=e153]: ✦
+      - generic [ref=e154]:
+        - generic [ref=e155]: Blockchain
+        - generic [ref=e156]: ✦
+      - generic [ref=e157]:
+        - generic [ref=e158]: Autonomous Systems
+        - generic [ref=e159]: ✦
+      - generic [ref=e160]:
+        - generic [ref=e161]: IoT & Computer Vision
+        - generic [ref=e162]: ✦
+      - generic [ref=e163]:
+        - generic [ref=e164]: Mobile Apps
+        - generic [ref=e165]: ✦
+    - generic [ref=e167]:
+      - generic [ref=e168]:
+        - generic [ref=e169]:
+          - generic [ref=e172]: My Specialization
+          - heading "Services I Provide" [level=2] [ref=e173]:
+            - text: Services
+            - generic [ref=e174]:
+              - text: I Provide
+              - img [ref=e175]
+        - paragraph [ref=e178]: End-to-end engineering across AI/ML, full-stack development, blockchain, and autonomous systems — built for production, performance, and measurable impact.
+      - generic [ref=e179]:
+        - button "01. AI/ML Solutions" [ref=e181]:
+          - generic [ref=e182]:
+            - generic [ref=e183]: "01."
+            - generic [ref=e184]: AI/ML Solutions
+          - img [ref=e187]
+        - generic [ref=e189]:
+          - button "02. Full-Stack Web & Mobile Development" [ref=e190]:
+            - generic [ref=e191]:
+              - generic [ref=e192]: "02."
+              - generic [ref=e193]: Full-Stack Web & Mobile Development
+            - img [ref=e196]
+          - generic [ref=e200]:
+            - generic [ref=e201]:
+              - generic [ref=e202]: Next.js & React
+              - generic [ref=e203]: Flutter
+              - generic [ref=e204]: TypeScript
+              - generic [ref=e205]: Secure Backend Architecture
+            - paragraph [ref=e206]: Building scalable web and mobile applications with modern stacks. I deliver production-ready Next.js / React dashboards, cross-platform Flutter apps, and secure backend systems with robust authentication and RBAC.
+            - button "Inquire about Full-Stack Web & Mobile Development" [ref=e208]:
+              - generic [ref=e209]: Inquire about Full-Stack Web & Mobile Development
+              - img [ref=e210]
+        - button "03. Blockchain & Smart Contracts" [ref=e213]:
+          - generic [ref=e214]:
+            - generic [ref=e215]: "03."
+            - generic [ref=e216]: Blockchain & Smart Contracts
+          - img [ref=e219]
+        - button "04. Autonomous Systems & IoT" [ref=e222]:
+          - generic [ref=e223]:
+            - generic [ref=e224]: "04."
+            - generic [ref=e225]: Autonomous Systems & IoT
+          - img [ref=e228]
+        - button "05. Community & Technical Leadership" [ref=e231]:
+          - generic [ref=e232]:
+            - generic [ref=e233]: "05."
+            - generic [ref=e234]: Community & Technical Leadership
+          - img [ref=e237]
+      - button "View All Services" [ref=e240]:
+        - generic [ref=e241]: View All Services
+        - img [ref=e243]
+    - generic [ref=e246]:
+      - generic [ref=e247]:
+        - generic [ref=e248]:
+          - generic [ref=e251]: About Me
+          - heading "Building intelligent systems that scale and deliver." [level=2] [ref=e252]
+        - generic [ref=e253]:
+          - paragraph [ref=e254]: I am Bevan — a Machine Learning Engineer, Full-Stack Developer, and Autonomous Systems Specialist based in Surabaya. With 3+ years of hands-on experience, I have built end-to-end solutions across AI/ML, robotics, blockchain, and web technologies for startups, government contracts, and robotics competitions.
+          - paragraph [ref=e255]: "My approach combines deep technical rigor with rapid iteration: translating complex challenges into production-ready systems. Whether architecting autonomous drones, deploying secure full-stack dashboards, or integrating LLMs, I focus on measurable impact and scalable architecture."
+      - generic [ref=e256]:
+        - generic [ref=e257]:
+          - generic [ref=e258]: 3+
+          - generic [ref=e259]: Years Experience
+        - generic [ref=e260]:
+          - generic [ref=e261]: 10+
+          - generic [ref=e262]: Projects Delivered
+        - generic [ref=e263]:
+          - generic [ref=e264]: "3"
+          - generic [ref=e265]: Peer-Reviewed Publications
+        - generic [ref=e266]:
+          - generic [ref=e267]: 4.85/5
+          - generic [ref=e268]: Average Satisfaction
+      - generic [ref=e269]:
+        - generic [ref=e270]:
+          - heading "My Engineering Principles" [level=3] [ref=e272]
+          - list [ref=e273]:
+            - listitem [ref=e274]:
+              - generic [ref=e275]: 01. Production-Ready Code
+              - generic [ref=e276]: "Every system is built to run reliably in production: tested, secure, observable, and documented."
+            - listitem [ref=e277]:
+              - generic [ref=e278]: 02. Rapid Iteration with AI
+              - generic [ref=e279]: I leverage AI-assisted workflows to accelerate development while maintaining hands-on quality control.
+            - listitem [ref=e280]:
+              - generic [ref=e281]: 03. Scalable Architecture
+              - generic [ref=e282]: From embedded devices to cloud backends, I architect modular systems that grow with the problem.
+        - generic [ref=e283]:
+          - generic [ref=e284]:
+            - heading "Core Competencies" [level=3] [ref=e285]
+            - paragraph [ref=e286]: "A hybrid skill set spanning AI research, autonomous systems, full-stack engineering, and blockchain development:"
+            - generic [ref=e287]:
+              - generic [ref=e288]:
+                - img [ref=e290]
+                - generic [ref=e292]: Machine Learning & LLM Integration
+              - generic [ref=e293]:
+                - img [ref=e295]
+                - generic [ref=e297]: Computer Vision & Sensor Fusion
+              - generic [ref=e298]:
+                - img [ref=e300]
+                - generic [ref=e302]: Full-Stack Web (Next.js / React / TypeScript)
+              - generic [ref=e303]:
+                - img [ref=e305]
+                - generic [ref=e307]: Cross-Platform Mobile (Flutter)
+              - generic [ref=e308]:
+                - img [ref=e310]
+                - generic [ref=e312]: Blockchain (Solidity / Rust / Solana)
+              - generic [ref=e313]:
+                - img [ref=e315]
+                - generic [ref=e317]: Autonomous Systems (ROS2 / MAVLink / Jetson)
+          - generic [ref=e318]:
+            - generic [ref=e319]: "TOOLS & SUITE:"
+            - generic [ref=e320]:
+              - generic [ref=e321]: Python
+              - text: •
+              - generic [ref=e322]: TensorFlow
+              - text: •
+              - generic [ref=e323]: ROS2
+              - text: •
+              - generic [ref=e324]: Next.js
+              - text: •
+              - generic [ref=e325]: Flutter
+              - text: •
+              - generic [ref=e326]: Solidity
+              - text: •
+              - generic [ref=e327]: Jetson Nano
+    - generic [ref=e329]:
+      - generic [ref=e330]:
+        - generic [ref=e331]:
+          - generic [ref=e334]: Selected Works
+          - heading "Featured Case Studies" [level=2] [ref=e335]
+        - generic [ref=e336]:
+          - button "All" [ref=e337]
+          - button "Web App" [ref=e338]
+          - button "Mobile App" [ref=e339]
+          - button "Autonomous Systems" [ref=e340]
+          - button "AI/ML" [ref=e341]
+          - button "Blockchain" [ref=e342]
+      - generic [ref=e343]:
+        - generic [ref=e344]:
+          - generic [ref=e345]:
+            - img "Owie Motion" [ref=e346]
+            - generic [ref=e347]: Web App
+            - button "Inquire About Project" [ref=e349]:
+              - generic [ref=e350]: Inquire About Project
+              - img [ref=e351]
+          - generic [ref=e353]:
+            - generic [ref=e354]:
+              - generic [ref=e356]: PROJECT / 2026
+              - heading "Owie Motion" [level=3] [ref=e357]
+            - generic [ref=e358]:
+              - generic [ref=e359]: Next.js
+              - generic [ref=e360]: Generative AI
+              - generic [ref=e361]: Full-Stack
+        - generic [ref=e362]:
+          - generic [ref=e363]:
+            - img "NasDem Election Dashboard" [ref=e364]
+            - generic [ref=e365]: Web App
+            - button "Inquire About Project" [ref=e367]:
+              - generic [ref=e368]: Inquire About Project
+              - img [ref=e369]
+          - generic [ref=e371]:
+            - generic [ref=e372]:
+              - generic [ref=e374]: PROJECT / 2026
+              - heading "NasDem Election Dashboard" [level=3] [ref=e375]
+            - generic [ref=e376]:
+              - generic [ref=e377]: Next.js
+              - generic [ref=e378]: RBAC
+              - generic [ref=e379]: Redis
+        - generic [ref=e380]:
+          - generic [ref=e381]:
+            - img "Surabaya Smart City Apps" [ref=e382]
+            - generic [ref=e383]: Mobile App
+            - button "Inquire About Project" [ref=e385]:
+              - generic [ref=e386]: Inquire About Project
+              - img [ref=e387]
+          - generic [ref=e389]:
+            - generic [ref=e390]:
+              - generic [ref=e392]: PROJECT / 2025
+              - heading "Surabaya Smart City Apps" [level=3] [ref=e393]
+            - generic [ref=e394]:
+              - generic [ref=e395]: Flutter
+              - generic [ref=e396]: Offline-First
+              - generic [ref=e397]: IoT
+        - generic [ref=e398]:
+          - generic [ref=e399]:
+            - img "Autonomous Drone Delivery" [ref=e400]
+            - generic [ref=e401]: Autonomous Systems
+            - button "Inquire About Project" [ref=e403]:
+              - generic [ref=e404]: Inquire About Project
+              - img [ref=e405]
+          - generic [ref=e407]:
+            - generic [ref=e408]:
+              - generic [ref=e410]: PROJECT / 2025
+              - heading "Autonomous Drone Delivery" [level=3] [ref=e411]
+            - generic [ref=e412]:
+              - generic [ref=e413]: ROS2
+              - generic [ref=e414]: MAVLink
+              - generic [ref=e415]: Computer Vision
+        - generic [ref=e416]:
+          - generic [ref=e417]:
+            - img "Landslide Detection IoT" [ref=e418]
+            - generic [ref=e419]: AI/ML
+            - button "Inquire About Project" [ref=e421]:
+              - generic [ref=e422]: Inquire About Project
+              - img [ref=e423]
+          - generic [ref=e425]:
+            - generic [ref=e426]:
+              - generic [ref=e428]: PROJECT / 2025
+              - heading "Landslide Detection IoT" [level=3] [ref=e429]
+            - generic [ref=e430]:
+              - generic [ref=e431]: Flutter
+              - generic [ref=e432]: Computer Vision
+              - generic [ref=e433]: IoT
+        - generic [ref=e434]:
+          - generic [ref=e435]:
+            - img "Diamante NFT Marketplace" [ref=e436]
+            - generic [ref=e437]: Blockchain
+            - button "Inquire About Project" [ref=e439]:
+              - generic [ref=e440]: Inquire About Project
+              - img [ref=e441]
+          - generic [ref=e443]:
+            - generic [ref=e444]:
+              - generic [ref=e446]: PROJECT / 2025
+              - heading "Diamante NFT Marketplace" [level=3] [ref=e447]
+            - generic [ref=e448]:
+              - generic [ref=e449]: Solidity
+              - generic [ref=e450]: Diamante
+              - generic [ref=e451]: NFT
+    - generic [ref=e453]:
+      - generic [ref=e454]:
+        - generic [ref=e455]:
+          - generic [ref=e458]: Engineering Notes
+          - heading "Insights & Publications" [level=2] [ref=e459]
+        - generic [ref=e461]: Sharing methodologies on AI systems, autonomous robotics, full-stack engineering, and blockchain development.
+      - generic [ref=e462]:
+        - article [ref=e463] [cursor=pointer]:
+          - generic [ref=e464]:
+            - 'img "From LLM Prompts to Production: Building AI-Native Apps" [ref=e465]'
+            - generic [ref=e466]: AI/ML
+          - generic [ref=e467]:
+            - generic [ref=e468]:
+              - generic [ref=e469]:
+                - generic [ref=e470]: June 15, 2026
+                - generic [ref=e471]: •
+                - generic [ref=e472]: 6 min read
+              - 'heading "From LLM Prompts to Production: Building AI-Native Apps" [level=3] [ref=e473]'
+              - paragraph [ref=e474]: A practical guide to integrating large language models into full-stack applications, from prompt engineering and cost control to observability and user feedback loops.
+            - generic [ref=e475]:
+              - generic [ref=e476]: Read Full Article
+              - img [ref=e477]
+        - article [ref=e479] [cursor=pointer]:
+          - generic [ref=e480]:
+            - 'img "Autonomous Drones with ROS2: A Solo Developer''s Workflow" [ref=e481]'
+            - generic [ref=e482]: Robotics
+          - generic [ref=e483]:
+            - generic [ref=e484]:
+              - generic [ref=e485]:
+                - generic [ref=e486]: May 28, 2026
+                - generic [ref=e487]: •
+                - generic [ref=e488]: 8 min read
+              - 'heading "Autonomous Drones with ROS2: A Solo Developer''s Workflow" [level=3] [ref=e489]'
+              - paragraph [ref=e490]: How I used ROS2, MAVLink, and an AI coding assistant to architect a collision-avoidance drone system and deploy a remote monitoring dashboard on a VPS.
+            - generic [ref=e491]:
+              - generic [ref=e492]: Read Full Article
+              - img [ref=e493]
+        - article [ref=e495] [cursor=pointer]:
+          - generic [ref=e496]:
+            - img "Scaling Flutter Apps for Offline-First Government Deployments" [ref=e497]
+            - generic [ref=e498]: Mobile Engineering
+          - generic [ref=e499]:
+            - generic [ref=e500]:
+              - generic [ref=e501]:
+                - generic [ref=e502]: April 12, 2026
+                - generic [ref=e503]: •
+                - generic [ref=e504]: 5 min read
+              - heading "Scaling Flutter Apps for Offline-First Government Deployments" [level=3] [ref=e505]
+              - paragraph [ref=e506]: "Lessons learned building two production Flutter applications for a city government: offline-first architecture, Riverpod state management, and zero-crash launches."
+            - generic [ref=e507]:
+              - generic [ref=e508]: Read Full Article
+              - img [ref=e509]
+    - generic [ref=e512]:
+      - generic [ref=e513]:
+        - generic [ref=e516]: Client Reviews
+        - heading "Loved by Leading Teams" [level=2] [ref=e518]
+        - paragraph [ref=e519]: I strive to build partnerships, not just codebases. Here is what product leads and engineering partners say about our collaborations.
+      - generic [ref=e520]:
+        - generic [ref=e521]:
+          - generic: ”
+          - generic [ref=e522]:
+            - generic [ref=e523]:
+              - img [ref=e524]
+              - img [ref=e526]
+              - img [ref=e528]
+              - img [ref=e530]
+              - img [ref=e532]
+            - paragraph [ref=e534]: “ Bevan integrated Generative AI features and backend infrastructure across Owie Motion, accelerating feature delivery while maintaining scalable architecture. ”
+          - generic [ref=e535]:
+            - img "Owie Technologies" [ref=e536]
+            - generic [ref=e537]:
+              - heading "Owie Technologies" [level=4] [ref=e538]
+              - paragraph [ref=e539]: Founding Engineer Engagement at Owie Motion
+        - generic [ref=e540]:
+          - generic: ”
+          - generic [ref=e541]:
+            - generic [ref=e542]:
+              - img [ref=e543]
+              - img [ref=e545]
+              - img [ref=e547]
+              - img [ref=e549]
+              - img [ref=e551]
+            - paragraph [ref=e553]: “ Delivered a secure admin dashboard with election data aggregation, RBAC, and Redis-based background jobs, reducing the initial development timeline by 40%. ”
+          - generic [ref=e554]:
+            - img "Partai Nasional Demokrat" [ref=e555]
+            - generic [ref=e556]:
+              - heading "Partai Nasional Demokrat" [level=4] [ref=e557]
+              - paragraph [ref=e558]: AI-Augmented Full Stack Developer at NasDem
+        - generic [ref=e559]:
+          - generic: ”
+          - generic [ref=e560]:
+            - generic [ref=e561]:
+              - img [ref=e562]
+              - img [ref=e564]
+              - img [ref=e566]
+              - img [ref=e568]
+              - img [ref=e570]
+            - paragraph [ref=e572]: “ Built two production Flutter applications end-to-end in a two-week sprint, achieving a 4.8/5 pilot satisfaction rating and zero crashes at launch. ”
+          - generic [ref=e573]:
+            - img "Pemerintah Kota Surabaya" [ref=e574]
+            - generic [ref=e575]:
+              - heading "Pemerintah Kota Surabaya" [level=4] [ref=e576]
+              - paragraph [ref=e577]: Solo Flutter Developer at Surabaya Smart City
+        - generic [ref=e578]:
+          - generic: ”
+          - generic [ref=e579]:
+            - generic [ref=e580]:
+              - img [ref=e581]
+              - img [ref=e583]
+              - img [ref=e585]
+              - img [ref=e587]
+              - img [ref=e589]
+            - paragraph [ref=e591]: “ Engineered a complete autonomous drone system using ROS2, MAVLink, and computer vision, complemented by a full-stack monitoring dashboard deployed on a VPS. ”
+          - generic [ref=e592]:
+            - img "Veteran Robotics UPNVJT" [ref=e593]
+            - generic [ref=e594]:
+              - heading "Veteran Robotics UPNVJT" [level=4] [ref=e595]
+              - paragraph [ref=e596]: Autonomous Drone Solo Programmer at KRTI / PIMNAS
+  - contentinfo [ref=e597]:
+    - generic [ref=e598]:
+      - generic [ref=e599]:
+        - generic [ref=e600]:
+          - generic [ref=e603]: B
+          - generic [ref=e604]: Bevan.
+        - paragraph [ref=e605]: Building end-to-end AI, full-stack, blockchain, and autonomous systems for high-growth teams, government contracts, and robotics competitions.
+        - generic [ref=e606]:
+          - generic [ref=e607]: © 2026 Bevan.
+          - generic [ref=e608]: All rights reserved.
+      - generic [ref=e609]:
+        - heading "Explore Portfolio" [level=4] [ref=e610]
+        - list [ref=e611]:
+          - listitem [ref=e612]:
+            - link "Home" [ref=e613] [cursor=pointer]:
+              - /url: "#home"
+          - listitem [ref=e614]:
+            - link "My Services" [ref=e615] [cursor=pointer]:
+              - /url: "#services"
+          - listitem [ref=e616]:
+            - link "About Experience" [ref=e617] [cursor=pointer]:
+              - /url: "#about"
+          - listitem [ref=e618]:
+            - link "Case Studies" [ref=e619] [cursor=pointer]:
+              - /url: "#projects"
+          - listitem [ref=e620]:
+            - link "Engineering Blog" [ref=e621] [cursor=pointer]:
+              - /url: "#blogs"
+      - generic [ref=e622]:
+        - heading "Let's Collaborate" [level=4] [ref=e623]
+        - generic [ref=e624]:
+          - paragraph [ref=e625]: Have an upcoming AI, web, or autonomous systems project? Let's discuss your technical sprint together.
+          - link "Open Contact Form" [ref=e626] [cursor=pointer]:
+            - /url: "#"
+        - generic [ref=e627]:
+          - textbox "Join tech digest..." [ref=e628]
+          - button "Subscribe" [ref=e629]
+    - generic [ref=e630]:
+      - generic [ref=e631]: Crafted with precision in Next.js, React & Tailwind CSS.
+      - button "BACK TO TOP" [ref=e632]:
+        - generic [ref=e633]: BACK TO TOP
+        - img [ref=e635]

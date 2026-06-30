@@ -1,0 +1,509 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "V Vans." [ref=e5] [cursor=pointer]:
+        - /url: "#home"
+        - generic [ref=e8]: V
+        - generic [ref=e9]: Vans.
+      - navigation [ref=e10]:
+        - link "Home" [ref=e11] [cursor=pointer]:
+          - /url: "#home"
+          - text: Home
+        - link "Services" [ref=e13] [cursor=pointer]:
+          - /url: "#services"
+        - link "About" [ref=e14] [cursor=pointer]:
+          - /url: "#about"
+        - link "Projects" [ref=e15] [cursor=pointer]:
+          - /url: "#projects"
+        - link "Blogs" [ref=e16] [cursor=pointer]:
+          - /url: "#blogs"
+        - link "Testimonials" [ref=e17] [cursor=pointer]:
+          - /url: "#testimonials"
+      - button "Contact Me" [ref=e19]
+  - main [ref=e20]:
+    - generic [ref=e21]:
+      - generic [ref=e22]:
+        - generic [ref=e25]: Hello There!
+        - heading "I'm Vans" [level=1] [ref=e27]:
+          - text: I'm
+          - generic [ref=e28]:
+            - text: Vans
+            - img [ref=e29]
+        - paragraph [ref=e31]: Product Designer based in USA
+        - generic [ref=e32]:
+          - generic [ref=e33]:
+            - generic [ref=e34]:
+              - generic [ref=e35]: “
+              - paragraph [ref=e36]: Vans' Remarkable Design Transformed Our Website – Highly Recommended!
+            - generic [ref=e37] [cursor=pointer]:
+              - generic [ref=e38]:
+                - img "Valued Client" [ref=e39]
+                - img "Valued Client" [ref=e40]
+                - img "Valued Client" [ref=e41]
+                - img "Valued Client" [ref=e42]
+              - generic [ref=e43]:
+                - generic [ref=e44]:
+                  - generic [ref=e45]: 150+ Reviews
+                  - generic [ref=e46]: (4.9 of 5)
+                - paragraph [ref=e47]: Reviews from Valued Clients
+          - generic [ref=e48]:
+            - generic:
+              - img "Vans Portrait"
+            - generic [ref=e49]:
+              - button "Portfolio" [ref=e50]:
+                - generic [ref=e51]: Portfolio
+                - img [ref=e53]
+              - button "Hire Me" [ref=e55]
+          - generic [ref=e56]:
+            - generic [ref=e57]:
+              - generic [ref=e58]: Prototype
+              - generic [ref=e59]: Dashboard
+              - generic [ref=e66]: Mobile App Design
+              - generic [ref=e67]: Design System
+              - generic [ref=e68]: Website Design
+            - generic [ref=e69]:
+              - generic [ref=e70]: Follow Us On
+              - generic [ref=e71]:
+                - link "Facebook" [ref=e72] [cursor=pointer]:
+                  - /url: "#"
+                  - img [ref=e73]
+                - link "X" [ref=e75] [cursor=pointer]:
+                  - /url: "#"
+                  - img [ref=e76]
+                - link "Pinterest" [ref=e78] [cursor=pointer]:
+                  - /url: "#"
+                  - img [ref=e79]
+                - link "Instagram" [ref=e81] [cursor=pointer]:
+                  - /url: "#"
+                  - img [ref=e82]
+      - generic [ref=e85]:
+        - img [ref=e86]:
+          - generic [ref=e87]: HIRE ME • HIRE ME • HIRE ME •
+        - img [ref=e89]
+    - generic [ref=e93]:
+      - generic [ref=e94]:
+        - generic [ref=e95]: Website Design
+        - generic [ref=e96]: ✦
+      - generic [ref=e97]:
+        - generic [ref=e98]: Dashboard
+        - generic [ref=e99]: ✦
+      - generic [ref=e100]:
+        - generic [ref=e101]: Wireframe
+        - generic [ref=e102]: ✦
+      - generic [ref=e103]:
+        - generic [ref=e104]: User Research
+        - generic [ref=e105]: ✦
+      - generic [ref=e106]:
+        - generic [ref=e107]: Mobile App Design
+        - generic [ref=e108]: ✦
+      - generic [ref=e109]:
+        - generic [ref=e110]: Design System
+        - generic [ref=e111]: ✦
+      - generic [ref=e112]:
+        - generic [ref=e113]: Website Design
+        - generic [ref=e114]: ✦
+      - generic [ref=e115]:
+        - generic [ref=e116]: Dashboard
+        - generic [ref=e117]: ✦
+      - generic [ref=e118]:
+        - generic [ref=e119]: Wireframe
+        - generic [ref=e120]: ✦
+      - generic [ref=e121]:
+        - generic [ref=e122]: User Research
+        - generic [ref=e123]: ✦
+      - generic [ref=e124]:
+        - generic [ref=e125]: Mobile App Design
+        - generic [ref=e126]: ✦
+      - generic [ref=e127]:
+        - generic [ref=e128]: Design System
+        - generic [ref=e129]: ✦
+      - generic [ref=e130]:
+        - generic [ref=e131]: Website Design
+        - generic [ref=e132]: ✦
+      - generic [ref=e133]:
+        - generic [ref=e134]: Dashboard
+        - generic [ref=e135]: ✦
+      - generic [ref=e136]:
+        - generic [ref=e137]: Wireframe
+        - generic [ref=e138]: ✦
+      - generic [ref=e139]:
+        - generic [ref=e140]: User Research
+        - generic [ref=e141]: ✦
+      - generic [ref=e142]:
+        - generic [ref=e143]: Mobile App Design
+        - generic [ref=e144]: ✦
+      - generic [ref=e145]:
+        - generic [ref=e146]: Design System
+        - generic [ref=e147]: ✦
+      - generic [ref=e148]:
+        - generic [ref=e149]: Website Design
+        - generic [ref=e150]: ✦
+      - generic [ref=e151]:
+        - generic [ref=e152]: Dashboard
+        - generic [ref=e153]: ✦
+      - generic [ref=e154]:
+        - generic [ref=e155]: Wireframe
+        - generic [ref=e156]: ✦
+      - generic [ref=e157]:
+        - generic [ref=e158]: User Research
+        - generic [ref=e159]: ✦
+      - generic [ref=e160]:
+        - generic [ref=e161]: Mobile App Design
+        - generic [ref=e162]: ✦
+      - generic [ref=e163]:
+        - generic [ref=e164]: Design System
+        - generic [ref=e165]: ✦
+    - generic [ref=e167]:
+      - generic [ref=e168]:
+        - generic [ref=e169]:
+          - generic [ref=e172]: My Specialization
+          - heading "Services I Provide" [level=2] [ref=e173]:
+            - text: Services
+            - generic [ref=e174]:
+              - text: I Provide
+              - img [ref=e175]
+        - paragraph [ref=e178]: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.
+      - generic [ref=e179]:
+        - button "01. UI/UX Design" [ref=e181]:
+          - generic [ref=e182]:
+            - generic [ref=e183]: "01."
+            - generic [ref=e184]: UI/UX Design
+          - img [ref=e187]
+        - generic [ref=e189]:
+          - button "02. Application Design" [ref=e190]:
+            - generic [ref=e191]:
+              - generic [ref=e192]: "02."
+              - generic [ref=e193]: Application Design
+            - img [ref=e196]
+          - generic [ref=e200]:
+            - generic [ref=e201]:
+              - generic [ref=e202]: Cross-Platform App Design
+              - generic [ref=e203]: Progressive Web App
+              - generic [ref=e204]: Wireframing and Prototyping
+              - generic [ref=e205]: Custom App Theme Design
+            - paragraph [ref=e206]: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.
+            - generic [ref=e208]:
+              - img "Application Design Mockup" [ref=e209]
+              - generic [ref=e211]: Interactive Workspace Model
+            - button "Inquire about Application Design" [ref=e213]:
+              - generic [ref=e214]: Inquire about Application Design
+              - img [ref=e215]
+        - button "03. Website Design" [ref=e218]:
+          - generic [ref=e219]:
+            - generic [ref=e220]: "03."
+            - generic [ref=e221]: Website Design
+          - img [ref=e224]
+        - button "04. UI Design" [ref=e227]:
+          - generic [ref=e228]:
+            - generic [ref=e229]: "04."
+            - generic [ref=e230]: UI Design
+          - img [ref=e233]
+        - button "05. Design System" [ref=e236]:
+          - generic [ref=e237]:
+            - generic [ref=e238]: "05."
+            - generic [ref=e239]: Design System
+          - img [ref=e242]
+      - button "View All Services" [ref=e245]:
+        - generic [ref=e246]: View All Services
+        - img [ref=e248]
+    - generic [ref=e251]:
+      - generic [ref=e252]:
+        - generic [ref=e253]:
+          - generic [ref=e256]: About Me
+          - heading "Crafting experiences that resonate and convert." [level=2] [ref=e257]
+        - generic [ref=e258]:
+          - paragraph [ref=e259]: I am Vans, a dedicated product designer with almost a decade of design agency and freelance partnership experience. I combine strategic human psychology, rigorous layout grid systems, and state-of-the-art interactive prototyping to build digital products that feel simple, elegant, and highly functional.
+          - paragraph [ref=e260]: "My philosophy is centered around human-centric patterns: removing cognitive friction at every stage of the user journey. I partner directly with startups, scaling platforms, and enterprise teams to define, construct, and scale robust web and app interfaces."
+      - generic [ref=e261]:
+        - generic [ref=e262]:
+          - generic [ref=e263]: 8+
+          - generic [ref=e264]: Years Experience
+        - generic [ref=e265]:
+          - generic [ref=e266]: 120+
+          - generic [ref=e267]: Global Projects Completed
+        - generic [ref=e268]:
+          - generic [ref=e269]: 99%
+          - generic [ref=e270]: Client Satisfaction
+        - generic [ref=e271]:
+          - generic [ref=e272]: 15+
+          - generic [ref=e273]: Countries Served
+      - generic [ref=e274]:
+        - generic [ref=e275]:
+          - heading "My Design Principles" [level=3] [ref=e277]
+          - list [ref=e278]:
+            - listitem [ref=e279]:
+              - generic [ref=e280]: 01. Radical Simplicity
+              - generic [ref=e281]: Remove unnecessary noise. Every border, color, and padding should serve a functional purpose.
+            - listitem [ref=e282]:
+              - generic [ref=e283]: 02. Consistency is King
+              - generic [ref=e284]: Build thorough visual hierarchies and reusable systems that empower developers and simplify scalability.
+            - listitem [ref=e285]:
+              - generic [ref=e286]: 03. Empathetic Intent
+              - generic [ref=e287]: Never assume. Prioritize concrete user telemetry, interviews, and analytics feedback over personal bias.
+        - generic [ref=e288]:
+          - generic [ref=e289]:
+            - heading "Core Competencies" [level=3] [ref=e290]
+            - paragraph [ref=e291]: "Through continuous iteration, I have refined my skill set to serve all aspects of modern web, app, and interface development pipelines:"
+            - generic [ref=e292]:
+              - generic [ref=e293]:
+                - img [ref=e295]
+                - generic [ref=e297]: User Research & Empathy Mapping
+              - generic [ref=e298]:
+                - img [ref=e300]
+                - generic [ref=e302]: Figma Design Systems & Tokens
+              - generic [ref=e303]:
+                - img [ref=e305]
+                - generic [ref=e307]: High-Fidelity Prototyping
+              - generic [ref=e308]:
+                - img [ref=e310]
+                - generic [ref=e312]: Interactive Web Design (Webflow/Framer)
+              - generic [ref=e313]:
+                - img [ref=e315]
+                - generic [ref=e317]: Cross-Platform App Architectures
+              - generic [ref=e318]:
+                - img [ref=e320]
+                - generic [ref=e322]: A/B Testing & Design Audits
+          - generic [ref=e323]:
+            - generic [ref=e324]: "TOOLS & SUITE:"
+            - generic [ref=e325]:
+              - generic [ref=e326]: Figma
+              - text: •
+              - generic [ref=e327]: Webflow
+              - text: •
+              - generic [ref=e328]: Framer
+              - text: •
+              - generic [ref=e329]: Adobe CC
+              - text: •
+              - generic [ref=e330]: React/Tailwind
+    - generic [ref=e332]:
+      - generic [ref=e333]:
+        - generic [ref=e334]:
+          - generic [ref=e337]: Selected Works
+          - heading "Featured Case Studies" [level=2] [ref=e338]
+        - generic [ref=e339]:
+          - button "All" [ref=e340]
+          - button "Dashboard" [ref=e341]
+          - button "Mobile App Design" [ref=e342]
+          - button "Design System" [ref=e343]
+          - button "Website Design" [ref=e344]
+      - generic [ref=e345]:
+        - generic [ref=e346]:
+          - generic [ref=e347]:
+            - img "Aether SaaS Dashboard" [ref=e348]
+            - generic [ref=e349]: Dashboard
+            - button "View Case Study" [ref=e351]:
+              - generic [ref=e352]: View Case Study
+              - img [ref=e353]
+          - generic [ref=e355]:
+            - generic [ref=e356]:
+              - generic [ref=e358]: PROJECT CASE / 2025
+              - heading "Aether SaaS Dashboard" [level=3] [ref=e359]
+            - generic [ref=e360]:
+              - generic [ref=e361]: UI/UX Design
+              - generic [ref=e362]: Data Visualization
+              - generic [ref=e363]: SaaS
+        - generic [ref=e364]:
+          - generic [ref=e365]:
+            - img "FitPulse Mobile App" [ref=e366]
+            - generic [ref=e367]: Mobile App Design
+            - button "View Case Study" [ref=e369]:
+              - generic [ref=e370]: View Case Study
+              - img [ref=e371]
+          - generic [ref=e373]:
+            - generic [ref=e374]:
+              - generic [ref=e376]: PROJECT CASE / 2025
+              - heading "FitPulse Mobile App" [level=3] [ref=e377]
+            - generic [ref=e378]:
+              - generic [ref=e379]: iOS Design
+              - generic [ref=e380]: Prototype
+              - generic [ref=e381]: Health Tech
+        - generic [ref=e382]:
+          - generic [ref=e383]:
+            - img "Nova Design System" [ref=e384]
+            - generic [ref=e385]: Design System
+            - button "View Case Study" [ref=e387]:
+              - generic [ref=e388]: View Case Study
+              - img [ref=e389]
+          - generic [ref=e391]:
+            - generic [ref=e392]:
+              - generic [ref=e394]: PROJECT CASE / 2024
+              - heading "Nova Design System" [level=3] [ref=e395]
+            - generic [ref=e396]:
+              - generic [ref=e397]: Figma
+              - generic [ref=e398]: Design Tokens
+              - generic [ref=e399]: Scalability
+        - generic [ref=e400]:
+          - generic [ref=e401]:
+            - img "Zenith E-Commerce" [ref=e402]
+            - generic [ref=e403]: Website Design
+            - button "View Case Study" [ref=e405]:
+              - generic [ref=e406]: View Case Study
+              - img [ref=e407]
+          - generic [ref=e409]:
+            - generic [ref=e410]:
+              - generic [ref=e412]: PROJECT CASE / 2024
+              - heading "Zenith E-Commerce" [level=3] [ref=e413]
+            - generic [ref=e414]:
+              - generic [ref=e415]: Web Design
+              - generic [ref=e416]: High Conversion
+              - generic [ref=e417]: Responsive
+    - generic [ref=e419]:
+      - generic [ref=e420]:
+        - generic [ref=e421]:
+          - generic [ref=e424]: Design Thoughts
+          - heading "Insights & Publications" [level=2] [ref=e425]
+        - generic [ref=e427]: Sharing methodologies on user behavior, layout sciences, and modern interface scaling.
+      - generic [ref=e428]:
+        - article [ref=e429] [cursor=pointer]:
+          - generic [ref=e430]:
+            - 'img "The Death of Flat Design: What''s Next in 2026?" [ref=e431]'
+            - generic [ref=e432]: UX/UI Strategy
+          - generic [ref=e433]:
+            - generic [ref=e434]:
+              - generic [ref=e435]:
+                - generic [ref=e436]: June 15, 2026
+                - generic [ref=e437]: •
+                - generic [ref=e438]: 5 min read
+              - 'heading "The Death of Flat Design: What''s Next in 2026?" [level=3] [ref=e439]'
+              - paragraph [ref=e440]: An analytical breakdown of tactile depth, ambient shadows, and the renaissance of human-centric skeuomorphic interfaces in modern web development.
+            - generic [ref=e441]:
+              - generic [ref=e442]: Read Full Article
+              - img [ref=e443]
+        - article [ref=e445] [cursor=pointer]:
+          - generic [ref=e446]:
+            - img "Scaling Figma Tokens for Multi-Brand Ecosystems" [ref=e447]
+            - generic [ref=e448]: Design Systems
+          - generic [ref=e449]:
+            - generic [ref=e450]:
+              - generic [ref=e451]:
+                - generic [ref=e452]: May 28, 2026
+                - generic [ref=e453]: •
+                - generic [ref=e454]: 8 min read
+              - heading "Scaling Figma Tokens for Multi-Brand Ecosystems" [level=3] [ref=e455]
+              - paragraph [ref=e456]: How to structure nested token sets in Figma, link them via JSON schema variables, and automate production-ready styling files directly into GitHub.
+            - generic [ref=e457]:
+              - generic [ref=e458]: Read Full Article
+              - img [ref=e459]
+        - article [ref=e461] [cursor=pointer]:
+          - generic [ref=e462]:
+            - 'img "Micro-Animations: The 1% Margin of Digital Delight" [ref=e463]'
+            - generic [ref=e464]: Prototyping
+          - generic [ref=e465]:
+            - generic [ref=e466]:
+              - generic [ref=e467]:
+                - generic [ref=e468]: April 12, 2026
+                - generic [ref=e469]: •
+                - generic [ref=e470]: 4 min read
+              - 'heading "Micro-Animations: The 1% Margin of Digital Delight" [level=3] [ref=e471]'
+              - paragraph [ref=e472]: Exploring how subtle transitions, hover ripples, and page transitions increase retention rates and keep users smiling throughout their session.
+            - generic [ref=e473]:
+              - generic [ref=e474]: Read Full Article
+              - img [ref=e475]
+    - generic [ref=e478]:
+      - generic [ref=e479]:
+        - generic [ref=e482]: Client Reviews
+        - heading "Loved by Leading Teams" [level=2] [ref=e484]
+        - paragraph [ref=e485]: I strive to build partnerships, not just templates. Here is what product managers and design directors say about our design iterations.
+      - generic [ref=e486]:
+        - generic [ref=e487]:
+          - generic: ”
+          - generic [ref=e488]:
+            - generic [ref=e489]:
+              - img [ref=e490]
+              - img [ref=e492]
+              - img [ref=e494]
+              - img [ref=e496]
+              - img [ref=e498]
+            - paragraph [ref=e500]: “ Vans' remarkable design transformed our website completely. The user experience is flawless, conversion increased by 40%, and his attention to detail is truly unparalleled. Highly recommended! ”
+          - generic [ref=e501]:
+            - img "Sarah Jenkins" [ref=e502]
+            - generic [ref=e503]:
+              - heading "Sarah Jenkins" [level=4] [ref=e504]
+              - paragraph [ref=e505]: VP of Product at StripeHQ
+        - generic [ref=e506]:
+          - generic: ”
+          - generic [ref=e507]:
+            - generic [ref=e508]:
+              - img [ref=e509]
+              - img [ref=e511]
+              - img [ref=e513]
+              - img [ref=e515]
+              - img [ref=e517]
+            - paragraph [ref=e519]: "“ Vans has a rare superpower: he balances artistic elegance with strict engineering constraints. Working together on our mobile app revamp was smooth, fast, and exceeded our goals. ”"
+          - generic [ref=e520]:
+            - img "Marcus Aurelius" [ref=e521]
+            - generic [ref=e522]:
+              - heading "Marcus Aurelius" [level=4] [ref=e523]
+              - paragraph [ref=e524]: Co-Founder at Aether Labs
+        - generic [ref=e525]:
+          - generic: ”
+          - generic [ref=e526]:
+            - generic [ref=e527]:
+              - img [ref=e528]
+              - img [ref=e530]
+              - img [ref=e532]
+              - img [ref=e534]
+              - img [ref=e536]
+            - paragraph [ref=e538]: “ The Design System Vans built has saved our team hundreds of hours. It is brilliantly documented, fully tokenized, and visually outstanding. A true design partner. ”
+          - generic [ref=e539]:
+            - img "Aisha Rahman" [ref=e540]
+            - generic [ref=e541]:
+              - heading "Aisha Rahman" [level=4] [ref=e542]
+              - paragraph [ref=e543]: Design Lead at PulseTech
+        - generic [ref=e544]:
+          - generic: ”
+          - generic [ref=e545]:
+            - generic [ref=e546]:
+              - img [ref=e547]
+              - img [ref=e549]
+              - img [ref=e551]
+              - img [ref=e553]
+              - img [ref=e555]
+            - paragraph [ref=e557]: “ Incredible communicator and absolute wizard with Figma. Vans took our vague product specs and shaped them into a highly intuitive SaaS dashboard. 10/10! ”
+          - generic [ref=e558]:
+            - img "Liam O'Connor" [ref=e559]
+            - generic [ref=e560]:
+              - heading "Liam O'Connor" [level=4] [ref=e561]
+              - paragraph [ref=e562]: Director of Product at ScribeAI
+  - contentinfo [ref=e563]:
+    - generic [ref=e564]:
+      - generic [ref=e565]:
+        - generic [ref=e566]:
+          - generic [ref=e569]: V
+          - generic [ref=e570]: Vans.
+        - paragraph [ref=e571]: Crafting premium digital products, robust layouts, and scalable design systems for high-growth teams and startups worldwide.
+        - generic [ref=e572]:
+          - generic [ref=e573]: © 2026 Vans.
+          - generic [ref=e574]: All rights reserved.
+      - generic [ref=e575]:
+        - heading "Explore Portfolio" [level=4] [ref=e576]
+        - list [ref=e577]:
+          - listitem [ref=e578]:
+            - link "Home" [ref=e579] [cursor=pointer]:
+              - /url: "#home"
+          - listitem [ref=e580]:
+            - link "My Services" [ref=e581] [cursor=pointer]:
+              - /url: "#services"
+          - listitem [ref=e582]:
+            - link "About Experience" [ref=e583] [cursor=pointer]:
+              - /url: "#about"
+          - listitem [ref=e584]:
+            - link "Case Studies" [ref=e585] [cursor=pointer]:
+              - /url: "#projects"
+          - listitem [ref=e586]:
+            - link "Design Blog" [ref=e587] [cursor=pointer]:
+              - /url: "#blogs"
+      - generic [ref=e588]:
+        - heading "Let's Collaborate" [level=4] [ref=e589]
+        - generic [ref=e590]:
+          - paragraph [ref=e591]: Have an upcoming product launch or revamp? Let's discuss your design sprint together.
+          - link "hello@vansdesign.com" [ref=e592] [cursor=pointer]:
+            - /url: mailto:hello@vansdesign.com
+        - generic [ref=e593]:
+          - textbox "Join design digest..." [ref=e594]
+          - button "Subscribe" [ref=e595]
+    - generic [ref=e596]:
+      - generic [ref=e597]: Crafted with pixel precision in React & Tailwind CSS.
+      - button "BACK TO TOP" [ref=e598]:
+        - generic [ref=e599]: BACK TO TOP
+        - img [ref=e601]
