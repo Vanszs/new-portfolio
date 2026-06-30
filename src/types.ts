@@ -28,4 +28,5 @@ export interface Project {
   image: string;
   tags: string[];
   year: string;
+  description?: string;
 }

@@ -118,7 +118,9 @@ export const PORTFOLIO_PROJECTS: Project[] = [
     image:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600",
     tags: ["Next.js", "Generative AI", "Full-Stack"],
-    year: "2026"
+    year: "2026",
+    description:
+      "AI-powered web automation platform integrating Generative AI features into frontend, backend, and infrastructure workflows."
   },
   {
     id: "p2",
@@ -127,7 +129,9 @@ export const PORTFOLIO_PROJECTS: Project[] = [
     image:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600",
     tags: ["Next.js", "RBAC", "Redis"],
-    year: "2026"
+    year: "2026",
+    description:
+      "Secure admin panel for election data aggregation, program management, role-based access control, and Redis-based background jobs."
   },
   {
     id: "p3",
@@ -136,7 +140,9 @@ export const PORTFOLIO_PROJECTS: Project[] = [
     image:
       "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=600",
     tags: ["Flutter", "Offline-First", "IoT"],
-    year: "2025"
+    year: "2025",
+    description:
+      "Two cross-platform Flutter applications for city government with offline-first architecture and real-time data synchronization."
   },
   {
     id: "p4",
@@ -145,7 +151,9 @@ export const PORTFOLIO_PROJECTS: Project[] = [
     image:
       "https://images.unsplash.com/photo-1507582020474-9a35b7d455d5?auto=format&fit=crop&q=80&w=600",
     tags: ["ROS2", "MAVLink", "Computer Vision"],
-    year: "2025"
+    year: "2025",
+    description:
+      "ROS2-based autonomous drone system with path planning, collision avoidance, and a VPS-deployed monitoring dashboard."
   },
   {
     id: "p5",
@@ -154,7 +162,9 @@ export const PORTFOLIO_PROJECTS: Project[] = [
     image:
       "https://images.unsplash.com/photo-1581093588402-485ed6ad48d4?auto=format&fit=crop&q=80&w=600",
     tags: ["Flutter", "Computer Vision", "IoT"],
-    year: "2025"
+    year: "2025",
+    description:
+      "Flutter mobile app paired with IoT sensors and computer vision for early detection of landslide potential."
   },
   {
     id: "p6",
@@ -163,7 +173,9 @@ export const PORTFOLIO_PROJECTS: Project[] = [
     image:
       "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=600",
     tags: ["Solidity", "Diamante", "NFT"],
-    year: "2025"
+    year: "2025",
+    description:
+      "Decentralized marketplace on the Diamante blockchain supporting NFT minting, listing, buying, and selling."
   },
   {
     id: "p7",
@@ -172,7 +184,9 @@ export const PORTFOLIO_PROJECTS: Project[] = [
     image:
       "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600",
     tags: ["GPT", "DeepSeek", "API Integration"],
-    year: "2025"
+    year: "2025",
+    description:
+      "AI system managing GPT and DeepSeek models, including API integration, fine-tuning, and hyperparameter optimization."
   },
   {
     id: "p8",
@@ -181,7 +195,9 @@ export const PORTFOLIO_PROJECTS: Project[] = [
     image:
       "https://images.unsplash.com/photo-1622630998477-20aa696ecb05?auto=format&fit=crop&q=80&w=600",
     tags: ["Rust", "Solana", "Solidity"],
-    year: "2025"
+    year: "2025",
+    description:
+      "Rust-based Solana migration contracts and Solidity smart contracts for scalable blockchain applications."
   },
   {
     id: "p9",
@@ -190,7 +206,9 @@ export const PORTFOLIO_PROJECTS: Project[] = [
     image:
       "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=600",
     tags: ["Discord", "Event Ops", "Support"],
-    year: "2023-2025"
+    year: "2023-2025",
+    description:
+      "Community moderation, game-night events, support tickets, and engagement initiatives for Carv."
   },
   {
     id: "p10",
@@ -199,7 +217,9 @@ export const PORTFOLIO_PROJECTS: Project[] = [
     image:
       "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=600",
     tags: ["Web3", "Partnerships", "Leadership"],
-    year: "2025"
+    year: "2025",
+    description:
+      "Web3 community growth, strategic partnerships, and team leadership as founder and tech lead."
   },
   {
     id: "p11",
@@ -208,7 +228,9 @@ export const PORTFOLIO_PROJECTS: Project[] = [
     image:
       "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=600",
     tags: ["Discord", "Moderation", "Growth"],
-    year: "2024-2026"
+    year: "2024-2026",
+    description:
+      "Scaled a Discord community from zero, trained moderators, and managed partnerships for a content creator."
   },
   {
     id: "p12",
@@ -217,7 +239,9 @@ export const PORTFOLIO_PROJECTS: Project[] = [
     image:
       "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&q=80&w=600",
     tags: ["ASV", "KKCTBN", "KKI"],
-    year: "2022-2024"
+    year: "2022-2024",
+    description:
+      "Led the ASV team to 2nd place in the KKCTBN 2023 and KKI 2024 maritime robotics competitions."
   },
   {
     id: "p13",
@@ -226,7 +250,9 @@ export const PORTFOLIO_PROJECTS: Project[] = [
     image:
       "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=600",
     tags: ["Python", "TensorFlow", "IoT"],
-    year: "2024"
+    year: "2024",
+    description:
+      "IoT-based computer vision prototype that improved detection accuracy by 25% for SME production efficiency."
   },
   {
     id: "p14",
@@ -235,6 +261,30 @@ export const PORTFOLIO_PROJECTS: Project[] = [
     image:
       "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=600",
     tags: ["HTML", "CSS", "JavaScript"],
-    year: "2021"
+    year: "2021",
+    description:
+      "Junior web developer project building and maintaining web interfaces at PT Imersa Solusi Teknologi."
+  },
+  {
+    id: "p15",
+    title: "Surabaya City Admin Dashboard",
+    category: "Web App",
+    image:
+      "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&q=80&w=600",
+    tags: ["Next.js", "RBAC", "MySQL"],
+    year: "2025",
+    description:
+      "Full-stack admin dashboard for city operations with role-based access control and secure API routes."
+  },
+  {
+    id: "p16",
+    title: "IGS Landslide ML Backend",
+    category: "AI/ML",
+    image:
+      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&q=80&w=600",
+    tags: ["Python", "TensorFlow", "IoT"],
+    year: "2025",
+    description:
+      "ML model and IoT data pipeline for landslide potential detection using sensor fusion and edge processing."
   }
 ];

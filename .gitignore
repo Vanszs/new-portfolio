@@ -31,3 +31,7 @@ npm-debug.log*
 # Temporary files
 *.tmp
 /tmp
+
+# Playwright snapshots
+.playwright-mcp/
+
