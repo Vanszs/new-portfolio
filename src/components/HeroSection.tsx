@@ -104,7 +104,7 @@ export default function HeroSection({ onHireClick, onPortfolioClick }: HeroSecti
             {/* Portrait Image Cutout */}
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-10 w-[280px] sm:w-[380px] md:w-[380px] h-auto pointer-events-none">
               <img
-                src="/images/oliver_organic_blob_1782749175886.jpg"
+                src="/images/image.png"
                 alt="Bevan Portrait"
                 referrerPolicy="no-referrer"
                 className="w-full h-auto object-cover rounded-3xl transform hover:scale-[1.02] transition-transform duration-500 origin-bottom"
