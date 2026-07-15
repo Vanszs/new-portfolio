@@ -21,10 +21,19 @@ export default function ProjectsAdminPage() {
   const [loading, setLoading] = useState(true);
 
   const fetchProjects = async () => {
-    const res = await fetch('/api/admin/projects');
-    const data = await res.json();
-    setProjects(data);
-    setLoading(false);
+    try {
+      const res = await fetch('/api/admin/projects');
+      if (res.status === 401 || res.status === 403) {
+        window.location.href = '/admin/login';
+        return;
+      }
+      const data = await res.json();
+      setProjects(Array.isArray(data) ? data : []);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -52,6 +61,7 @@ export default function ProjectsAdminPage() {
               <label className="block text-sm font-semibold text-brand-dark mb-1">Title</label>
               <input
                 type="text"
+                name="title"
                 value={(item as Project).title || ''}
                 onChange={(e) => onChange({ ...item, title: e.target.value })}
                 className="w-full px-4 py-3 rounded-xl border border-[#e5e2da] bg-[#fcfbf9] focus:outline-none focus:border-brand-orange"
@@ -61,6 +71,7 @@ export default function ProjectsAdminPage() {
               <div>
                 <label className="block text-sm font-semibold text-brand-dark mb-1">Category</label>
                 <select
+                  name="category"
                   value={(item as Project).category || 'Web App'}
                   onChange={(e) => onChange({ ...item, category: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl border border-[#e5e2da] bg-[#fcfbf9] focus:outline-none focus:border-brand-orange"
@@ -74,6 +85,7 @@ export default function ProjectsAdminPage() {
                 <label className="block text-sm font-semibold text-brand-dark mb-1">Year</label>
                 <input
                   type="text"
+                  name="year"
                   value={(item as Project).year || ''}
                   onChange={(e) => onChange({ ...item, year: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl border border-[#e5e2da] bg-[#fcfbf9] focus:outline-none focus:border-brand-orange"
@@ -91,6 +103,7 @@ export default function ProjectsAdminPage() {
               <label className="block text-sm font-semibold text-brand-dark mb-1">Tags (comma separated)</label>
               <input
                 type="text"
+                name="tags"
                 value={((item as Project).tags || []).join(', ')}
                 onChange={(e) => onChange({ ...item, tags: e.target.value.split(',').map((t) => t.trim()).filter(Boolean) })}
                 className="w-full px-4 py-3 rounded-xl border border-[#e5e2da] bg-[#fcfbf9] focus:outline-none focus:border-brand-orange"
@@ -99,6 +112,7 @@ export default function ProjectsAdminPage() {
             <div>
               <label className="block text-sm font-semibold text-brand-dark mb-1">Description</label>
               <textarea
+                name="description"
                 value={(item as Project).description || ''}
                 onChange={(e) => onChange({ ...item, description: e.target.value })}
                 rows={4}
@@ -109,12 +123,14 @@ export default function ProjectsAdminPage() {
               <label className="block text-sm font-semibold text-brand-dark mb-1">Order</label>
               <input
                 type="number"
+                name="order"
                 value={(item as Project).order || 0}
                 onChange={(e) => onChange({ ...item, order: parseInt(e.target.value) || 0 })}
                 className="w-full px-4 py-3 rounded-xl border border-[#e5e2da] bg-[#fcfbf9] focus:outline-none focus:border-brand-orange"
               />
             </div>
           </div>
+
         )}
       />
     </div>

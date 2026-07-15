@@ -35,5 +35,10 @@ npm-debug.log*
 # Playwright snapshots
 .playwright-mcp/
 
+# Test scripts (local only, except test-logout-pw.cjs used in CI)
+test-admin.js
+test-crud.js
+admin.spec.js
+
 
 /src/generated/prisma

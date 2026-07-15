@@ -10,10 +10,19 @@ export default function TestimonialsAdminPage() {
   const [loading, setLoading] = useState(true);
 
   const fetchTestimonials = async () => {
-    const res = await fetch('/api/admin/testimonials');
-    const data = await res.json();
-    setTestimonials(data);
-    setLoading(false);
+    try {
+      const res = await fetch('/api/admin/testimonials');
+      if (res.status === 401 || res.status === 403) {
+        window.location.href = '/admin/login';
+        return;
+      }
+      const data = await res.json();
+      setTestimonials(Array.isArray(data) ? data : []);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -42,6 +51,7 @@ export default function TestimonialsAdminPage() {
                 <label className="block text-sm font-semibold text-brand-dark mb-1">Name</label>
                 <input
                   type="text"
+                  name="name"
                   value={(item as Testimonial).name || ''}
                   onChange={(e) => onChange({ ...item, name: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl border border-[#e5e2da] bg-[#fcfbf9] focus:outline-none focus:border-brand-orange"
@@ -51,6 +61,7 @@ export default function TestimonialsAdminPage() {
                 <label className="block text-sm font-semibold text-brand-dark mb-1">Rating</label>
                 <input
                   type="number"
+                  name="rating"
                   min={1}
                   max={5}
                   value={(item as Testimonial).rating || 5}
@@ -64,6 +75,7 @@ export default function TestimonialsAdminPage() {
                 <label className="block text-sm font-semibold text-brand-dark mb-1">Role</label>
                 <input
                   type="text"
+                  name="role"
                   value={(item as Testimonial).role || ''}
                   onChange={(e) => onChange({ ...item, role: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl border border-[#e5e2da] bg-[#fcfbf9] focus:outline-none focus:border-brand-orange"
@@ -73,6 +85,7 @@ export default function TestimonialsAdminPage() {
                 <label className="block text-sm font-semibold text-brand-dark mb-1">Company</label>
                 <input
                   type="text"
+                  name="company"
                   value={(item as Testimonial).company || ''}
                   onChange={(e) => onChange({ ...item, company: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl border border-[#e5e2da] bg-[#fcfbf9] focus:outline-none focus:border-brand-orange"
@@ -89,6 +102,7 @@ export default function TestimonialsAdminPage() {
             <div>
               <label className="block text-sm font-semibold text-brand-dark mb-1">Testimonial Text</label>
               <textarea
+                name="text"
                 value={(item as Testimonial).text || ''}
                 onChange={(e) => onChange({ ...item, text: e.target.value })}
                 rows={4}
@@ -99,6 +113,7 @@ export default function TestimonialsAdminPage() {
               <label className="block text-sm font-semibold text-brand-dark mb-1">Order</label>
               <input
                 type="number"
+                name="order"
                 value={(item as Testimonial).order || 0}
                 onChange={(e) => onChange({ ...item, order: parseInt(e.target.value) || 0 })}
                 className="w-full px-4 py-3 rounded-xl border border-[#e5e2da] bg-[#fcfbf9] focus:outline-none focus:border-brand-orange"

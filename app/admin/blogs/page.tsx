@@ -10,10 +10,19 @@ export default function BlogsAdminPage() {
   const [loading, setLoading] = useState(true);
 
   const fetchBlogs = async () => {
-    const res = await fetch('/api/admin/blogs');
-    const data = await res.json();
-    setBlogs(data);
-    setLoading(false);
+    try {
+      const res = await fetch('/api/admin/blogs');
+      if (res.status === 401 || res.status === 403) {
+        window.location.href = '/admin/login';
+        return;
+      }
+      const data = await res.json();
+      setBlogs(Array.isArray(data) ? data : []);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -41,6 +50,7 @@ export default function BlogsAdminPage() {
               <label className="block text-sm font-semibold text-brand-dark mb-1">Title</label>
               <input
                 type="text"
+                name="title"
                 value={(item as Blog).title || ''}
                 onChange={(e) => onChange({ ...item, title: e.target.value })}
                 className="w-full px-4 py-3 rounded-xl border border-[#e5e2da] bg-[#fcfbf9] focus:outline-none focus:border-brand-orange"
@@ -51,6 +61,7 @@ export default function BlogsAdminPage() {
                 <label className="block text-sm font-semibold text-brand-dark mb-1">Category</label>
                 <input
                   type="text"
+                  name="category"
                   value={(item as Blog).category || ''}
                   onChange={(e) => onChange({ ...item, category: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl border border-[#e5e2da] bg-[#fcfbf9] focus:outline-none focus:border-brand-orange"
@@ -60,6 +71,7 @@ export default function BlogsAdminPage() {
                 <label className="block text-sm font-semibold text-brand-dark mb-1">Read Time</label>
                 <input
                   type="text"
+                  name="readTime"
                   value={(item as Blog).readTime || ''}
                   onChange={(e) => onChange({ ...item, readTime: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl border border-[#e5e2da] bg-[#fcfbf9] focus:outline-none focus:border-brand-orange"
@@ -70,6 +82,7 @@ export default function BlogsAdminPage() {
               <label className="block text-sm font-semibold text-brand-dark mb-1">Date</label>
               <input
                 type="text"
+                name="date"
                 value={(item as Blog).date || ''}
                 onChange={(e) => onChange({ ...item, date: e.target.value })}
                 className="w-full px-4 py-3 rounded-xl border border-[#e5e2da] bg-[#fcfbf9] focus:outline-none focus:border-brand-orange"
@@ -85,6 +98,7 @@ export default function BlogsAdminPage() {
             <div>
               <label className="block text-sm font-semibold text-brand-dark mb-1">Description</label>
               <textarea
+                name="description"
                 value={(item as Blog).description || ''}
                 onChange={(e) => onChange({ ...item, description: e.target.value })}
                 rows={4}
@@ -95,6 +109,7 @@ export default function BlogsAdminPage() {
               <label className="block text-sm font-semibold text-brand-dark mb-1">Order</label>
               <input
                 type="number"
+                name="order"
                 value={(item as Blog).order || 0}
                 onChange={(e) => onChange({ ...item, order: parseInt(e.target.value) || 0 })}
                 className="w-full px-4 py-3 rounded-xl border border-[#e5e2da] bg-[#fcfbf9] focus:outline-none focus:border-brand-orange"

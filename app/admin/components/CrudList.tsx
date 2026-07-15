@@ -14,12 +14,13 @@ interface CrudListProps<T extends { id: string; order: number }> {
 
 export default function CrudList<T extends { id: string; order: number }>({
   title,
-  items,
+  items: rawItems,
   apiPath,
   renderForm,
   emptyItem,
   onRefresh,
 }: CrudListProps<T>) {
+  const items = Array.isArray(rawItems) ? rawItems : [];
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState<Partial<T> | null>(null);
   const [formData, setFormData] = useState<Partial<T>>(emptyItem);
@@ -103,16 +104,19 @@ export default function CrudList<T extends { id: string; order: number }>({
       const targetOrder = items[targetIndex].order;
       const targetId = items[targetIndex].id;
 
+      const currentItem = { ...items[index], order: targetOrder };
+      const targetItem = { ...items[targetIndex], order: currentOrder };
+
       const [res1, res2] = await Promise.all([
         fetch(apiPath, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ id, order: targetOrder }),
+          body: JSON.stringify(currentItem),
         }),
         fetch(apiPath, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ id: targetId, order: currentOrder }),
+          body: JSON.stringify(targetItem),
         }),
       ]);
 
@@ -128,6 +132,7 @@ export default function CrudList<T extends { id: string; order: number }>({
       setWorkingId(null);
     }
   };
+
 
   return (
     <div>

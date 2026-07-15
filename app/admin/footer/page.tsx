@@ -13,10 +13,19 @@ export default function FooterAdminPage() {
   const [saving, setSaving] = useState(false);
 
   const fetchFooter = async () => {
-    const res = await fetch('/api/admin/footer');
-    const data = await res.json();
-    if (data) setFooter(data);
-    setLoading(false);
+    try {
+      const res = await fetch('/api/admin/footer');
+      if (res.status === 401 || res.status === 403) {
+        window.location.href = '/admin/login';
+        return;
+      }
+      const data = await res.json();
+      if (data) setFooter(data);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -49,6 +58,7 @@ export default function FooterAdminPage() {
         <div>
           <label className="block text-sm font-semibold text-brand-dark mb-1">Brand Text</label>
           <textarea
+            name="brandText"
             value={footer.brandText || ''}
             onChange={(e) => setFooter({ ...footer, brandText: e.target.value })}
             rows={3}
@@ -59,6 +69,7 @@ export default function FooterAdminPage() {
           <label className="block text-sm font-semibold text-brand-dark mb-1">Copyright Text</label>
           <input
             type="text"
+            name="copyrightText"
             value={footer.copyrightText || ''}
             onChange={(e) => setFooter({ ...footer, copyrightText: e.target.value })}
             className="w-full px-4 py-3 rounded-xl border border-[#e5e2da] bg-[#fcfbf9] focus:outline-none focus:border-brand-orange"
@@ -67,6 +78,7 @@ export default function FooterAdminPage() {
         <div>
           <label className="block text-sm font-semibold text-brand-dark mb-1">Social Links (JSON array)</label>
           <textarea
+            name="socialLinks"
             value={JSON.stringify(socialLinks, null, 2)}
             onChange={(e) => {
               try {

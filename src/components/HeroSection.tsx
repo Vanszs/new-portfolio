@@ -88,6 +88,8 @@ export default function HeroSection({ onHireClick, onPortfolioClick, data }: Her
                     key={i}
                     src={avatar}
                     alt="Valued Client"
+                    width={40}
+                    height={40}
                     referrerPolicy="no-referrer"
                     className="w-10 h-10 rounded-full border-2 border-brand-bg object-cover"
                   />
@@ -112,6 +114,8 @@ export default function HeroSection({ onHireClick, onPortfolioClick, data }: Her
               <img
                 src={data?.imageUrl || '/images/image.png'}
                 alt="Bevan Portrait"
+                width={380}
+                height={380}
                 referrerPolicy="no-referrer"
                 className="w-full h-auto object-cover rounded-3xl transform hover:scale-[1.02] transition-transform duration-500 origin-bottom"
               />

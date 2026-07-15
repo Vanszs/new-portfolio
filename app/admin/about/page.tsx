@@ -15,10 +15,19 @@ export default function AboutAdminPage() {
   const [saving, setSaving] = useState(false);
 
   const fetchAbout = async () => {
-    const res = await fetch('/api/admin/about');
-    const data = await res.json();
-    if (data) setAbout(data);
-    setLoading(false);
+    try {
+      const res = await fetch('/api/admin/about');
+      if (res.status === 401 || res.status === 403) {
+        window.location.href = '/admin/login';
+        return;
+      }
+      const data = await res.json();
+      if (data) setAbout(data);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -53,6 +62,7 @@ export default function AboutAdminPage() {
         <div>
           <label className="block text-sm font-semibold text-brand-dark mb-1">Bio</label>
           <textarea
+            name="bio"
             value={about.bio || ''}
             onChange={(e) => setAbout({ ...about, bio: e.target.value })}
             rows={5}
@@ -62,6 +72,7 @@ export default function AboutAdminPage() {
         <div>
           <label className="block text-sm font-semibold text-brand-dark mb-1">Second Bio Paragraph</label>
           <textarea
+            name="bioSecond"
             value={about.bioSecond || ''}
             onChange={(e) => setAbout({ ...about, bioSecond: e.target.value })}
             rows={5}
@@ -71,6 +82,7 @@ export default function AboutAdminPage() {
         <div>
           <label className="block text-sm font-semibold text-brand-dark mb-1">Core Skills (one per line)</label>
           <textarea
+            name="coreSkills"
             value={coreSkills.join('\n')}
             onChange={(e) => setAbout({ ...about, coreSkills: e.target.value.split('\n').map((s) => s.trim()).filter(Boolean) })}
             rows={6}
@@ -80,6 +92,7 @@ export default function AboutAdminPage() {
         <div>
           <label className="block text-sm font-semibold text-brand-dark mb-1">Milestones (JSON array)</label>
           <textarea
+            name="milestones"
             value={JSON.stringify(milestones, null, 2)}
             onChange={(e) => {
               try {
@@ -93,6 +106,7 @@ export default function AboutAdminPage() {
         <div>
           <label className="block text-sm font-semibold text-brand-dark mb-1">Principles (JSON array)</label>
           <textarea
+            name="principles"
             value={JSON.stringify(principles, null, 2)}
             onChange={(e) => {
               try {

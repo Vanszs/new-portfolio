@@ -56,7 +56,7 @@ export default function AdminSidebar() {
       </nav>
       <div className="p-4 border-t border-[#e5e2da]">
         <button
-          onClick={() => signOut({ callbackUrl: '/admin/login' })}
+          onClick={() => signOut({ redirectTo: '/admin/login' })}
           className="flex items-center gap-3 px-4 py-3 w-full rounded-xl text-[#5e5e5e] hover:bg-[#f3f2ee] hover:text-brand-dark font-medium transition-all"
         >
           <LogOut size={18} />

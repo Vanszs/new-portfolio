@@ -69,6 +69,8 @@ export default function TestimonialsSection({ data }: TestimonialsSectionProps) 
                 <img
                   src={testimonial.avatar}
                   alt={testimonial.name}
+                  width={48}
+                  height={48}
                   referrerPolicy="no-referrer"
                   className="w-12 h-12 rounded-full object-cover border border-[#e5e2da]"
                 />

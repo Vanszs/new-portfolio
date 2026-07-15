@@ -65,19 +65,31 @@ export default function ImageUpload({ value, onChange }: ImageUploadProps) {
       {value && (
         <img src={value} alt="Preview" className="w-32 h-32 object-cover rounded-2xl border border-[#e5e2da]" />
       )}
-      <label
-        className={`inline-flex items-center gap-2 px-4 py-2 bg-brand-dark text-white rounded-full text-sm font-semibold cursor-pointer hover:bg-brand-orange transition-colors ${uploading ? 'opacity-70 pointer-events-none' : ''}`}
-      >
-        {uploading ? 'Uploading...' : 'Upload Image'}
+      <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
         <input
-          type="file"
-          accept="image/*"
-          className="hidden"
-          onChange={handleUpload}
-          disabled={uploading}
+          type="text"
+          name="image"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder="Paste image URL..."
+          className="flex-1 px-4 py-2.5 rounded-xl border border-[#e5e2da] bg-[#fcfbf9] text-sm focus:outline-none focus:border-brand-orange"
         />
-      </label>
+        <span className="text-xs text-[#8c8c8c] text-center">or</span>
+        <label
+          className={`inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-brand-dark text-white rounded-xl text-sm font-semibold cursor-pointer hover:bg-brand-orange transition-colors shrink-0 ${uploading ? 'opacity-70 pointer-events-none' : ''}`}
+        >
+          {uploading ? 'Uploading...' : 'Upload File'}
+          <input
+            type="file"
+            accept="image/*"
+            className="hidden"
+            onChange={handleUpload}
+            disabled={uploading}
+          />
+        </label>
+      </div>
       {error && <p className="text-sm text-red-600">{error}</p>}
     </div>
   );
+
 }

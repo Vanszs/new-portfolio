@@ -114,10 +114,11 @@ export default function ServicesSection({ onServiceActionClick, data }: Services
                 <AnimatePresence initial={false}>
                   {isExpanded && (
                     <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.4, ease: "easeInOut" }}
+                      initial={{ scaleY: 0, opacity: 0 }}
+                      animate={{ scaleY: 1, opacity: 1 }}
+                      exit={{ scaleY: 0, opacity: 0 }}
+                      style={{ transformOrigin: "top" }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="bg-brand-dark text-white rounded-b-[24px] border-t border-white/5 overflow-hidden"
                     >
                       <div className="px-6 sm:px-10 pb-8 pt-4 flex flex-col gap-6">

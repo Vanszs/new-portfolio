@@ -15,10 +15,19 @@ export default function HeroAdminPage() {
   const [saving, setSaving] = useState(false);
 
   const fetchHero = async () => {
-    const res = await fetch('/api/admin/hero');
-    const data = await res.json();
-    if (data) setHero(data);
-    setLoading(false);
+    try {
+      const res = await fetch('/api/admin/hero');
+      if (res.status === 401 || res.status === 403) {
+        window.location.href = '/admin/login';
+        return;
+      }
+      const data = await res.json();
+      if (data) setHero(data);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -50,6 +59,7 @@ export default function HeroAdminPage() {
           <label className="block text-sm font-semibold text-brand-dark mb-1">Tagline</label>
           <input
             type="text"
+            name="tagline"
             value={hero.tagline || ''}
             onChange={(e) => setHero({ ...hero, tagline: e.target.value })}
             className="w-full px-4 py-3 rounded-xl border border-[#e5e2da] bg-[#fcfbf9] focus:outline-none focus:border-brand-orange"
@@ -59,6 +69,7 @@ export default function HeroAdminPage() {
           <label className="block text-sm font-semibold text-brand-dark mb-1">Headline</label>
           <input
             type="text"
+            name="headline"
             value={hero.headline || ''}
             onChange={(e) => setHero({ ...hero, headline: e.target.value })}
             className="w-full px-4 py-3 rounded-xl border border-[#e5e2da] bg-[#fcfbf9] focus:outline-none focus:border-brand-orange"
@@ -67,6 +78,7 @@ export default function HeroAdminPage() {
         <div>
           <label className="block text-sm font-semibold text-brand-dark mb-1">Subtitle</label>
           <textarea
+            name="subtitle"
             value={hero.subtitle || ''}
             onChange={(e) => setHero({ ...hero, subtitle: e.target.value })}
             rows={3}

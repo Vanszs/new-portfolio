@@ -9,10 +9,19 @@ export default function ServicesAdminPage() {
   const [loading, setLoading] = useState(true);
 
   const fetchServices = async () => {
-    const res = await fetch('/api/admin/services');
-    const data = await res.json();
-    setServices(data);
-    setLoading(false);
+    try {
+      const res = await fetch('/api/admin/services');
+      if (res.status === 401 || res.status === 403) {
+        window.location.href = '/admin/login';
+        return;
+      }
+      const data = await res.json();
+      setServices(Array.isArray(data) ? data : []);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -40,6 +49,7 @@ export default function ServicesAdminPage() {
               <label className="block text-sm font-semibold text-brand-dark mb-1">Title</label>
               <input
                 type="text"
+                name="title"
                 value={(item as Service).title || ''}
                 onChange={(e) => onChange({ ...item, title: e.target.value })}
                 className="w-full px-4 py-3 rounded-xl border border-[#e5e2da] bg-[#fcfbf9] focus:outline-none focus:border-brand-orange"
@@ -49,6 +59,7 @@ export default function ServicesAdminPage() {
               <label className="block text-sm font-semibold text-brand-dark mb-1">Tags (comma separated)</label>
               <input
                 type="text"
+                name="tags"
                 value={((item as Service).tags || []).join(', ')}
                 onChange={(e) => onChange({ ...item, tags: e.target.value.split(',').map((t) => t.trim()).filter(Boolean) })}
                 className="w-full px-4 py-3 rounded-xl border border-[#e5e2da] bg-[#fcfbf9] focus:outline-none focus:border-brand-orange"
@@ -57,6 +68,7 @@ export default function ServicesAdminPage() {
             <div>
               <label className="block text-sm font-semibold text-brand-dark mb-1">Description</label>
               <textarea
+                name="description"
                 value={(item as Service).description || ''}
                 onChange={(e) => onChange({ ...item, description: e.target.value })}
                 rows={4}
@@ -67,6 +79,7 @@ export default function ServicesAdminPage() {
               <label className="block text-sm font-semibold text-brand-dark mb-1">Order</label>
               <input
                 type="number"
+                name="order"
                 value={(item as Service).order || 0}
                 onChange={(e) => onChange({ ...item, order: parseInt(e.target.value) || 0 })}
                 className="w-full px-4 py-3 rounded-xl border border-[#e5e2da] bg-[#fcfbf9] focus:outline-none focus:border-brand-orange"

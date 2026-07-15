@@ -13,7 +13,6 @@ function parseAllowedList(envValue: string | undefined): string[] {
     .filter(Boolean);
 }
 
-const allowedGoogleDomains = parseAllowedList(process.env.AUTH_GOOGLE_ALLOWED_DOMAINS);
 const allowedGoogleEmails = parseAllowedList(process.env.AUTH_GOOGLE_ALLOWED_EMAILS);
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
@@ -46,23 +45,25 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         if (!profileEmailVerified || !user.email) return false;
 
         const email = user.email.toLowerCase();
-        const domainAllowed = allowedGoogleDomains.some((domain) => email.endsWith(`@${domain}`));
         const emailAllowed = allowedGoogleEmails.includes(email);
-        if (!domainAllowed && !emailAllowed) return false;
+        if (!emailAllowed) return false;
       }
       return true;
     },
     jwt: async ({ token, user }) => {
       if (user) {
         token.sub = user.id;
-        token.role = 'admin';
+        token.role = (user as any).role || 'admin';
       }
       return token;
     },
-    session: async ({ session, token }) => {
+    session: async ({ session, token, user }) => {
       if (token?.sub) {
         session.user.id = token.sub;
         session.user.role = token.role as string;
+      } else if (user) {
+        session.user.id = user.id;
+        session.user.role = (user as any).role || 'admin';
       }
       return session;
     },
