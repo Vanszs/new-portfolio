@@ -15,7 +15,7 @@ jobs:
         image: postgres:15
         env:
           POSTGRES_USER: bevan_user
-          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_PASSWORD: ci_test_password_only
           POSTGRES_DB: bevan_portfolio
         ports:
           - 5432:5432
@@ -26,7 +26,7 @@ jobs:
           --health-retries 5
 
     env:
-      DATABASE_URL: "postgresql://bevan_user:${{ secrets.POSTGRES_PASSWORD }}@localhost:5432/bevan_portfolio"
+      DATABASE_URL: "postgresql://bevan_user:ci_test_password_only@localhost:5432/bevan_portfolio"
       AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
       AUTH_URL: "http://localhost:3000"
       AUTH_GOOGLE_ID: ${{ secrets.AUTH_GOOGLE_ID }}
