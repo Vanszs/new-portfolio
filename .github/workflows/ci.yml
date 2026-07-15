@@ -19,9 +19,9 @@ jobs:
               set -e
               cd ~/code/new-portfolio
               git pull origin main
-              bun install --frozen-lockfile
-              bun x prisma migrate deploy
-              bun run build
+              npm install
+              npx prisma migrate deploy
+              npm run build
               pm2 restart portfolio
               pm2 save
             "
