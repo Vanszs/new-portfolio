@@ -3,11 +3,21 @@ import { motion, AnimatePresence } from "motion/react";
 import { X, ArrowRight } from "lucide-react";
 import { SERVICES } from "../data";
 
-interface ServicesSectionProps {
-  onServiceActionClick: (serviceTitle: string) => void;
+interface ServiceItem {
+  id: string;
+  title: string;
+  tags: string[];
+  description: string;
+  image?: string | null;
 }
 
-export default function ServicesSection({ onServiceActionClick }: ServicesSectionProps) {
+interface ServicesSectionProps {
+  onServiceActionClick: (serviceTitle: string) => void;
+  data?: ServiceItem[];
+}
+
+export default function ServicesSection({ onServiceActionClick, data }: ServicesSectionProps) {
+  const services = data && data.length > 0 ? data : SERVICES;
   // Initial state has '02' (Full-Stack Web & Mobile Development) expanded
   const [expandedId, setExpandedId] = useState<string | null>("02");
 
@@ -52,7 +62,7 @@ export default function ServicesSection({ onServiceActionClick }: ServicesSectio
 
         {/* Accordion / List of Services */}
         <div className="flex flex-col gap-4 mb-12">
-          {SERVICES.map((service) => {
+          {services.map((service) => {
             const isExpanded = expandedId === service.id;
             
             return (

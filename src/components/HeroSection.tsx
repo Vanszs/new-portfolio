@@ -5,9 +5,15 @@ import { ArrowRight } from "lucide-react";
 interface HeroSectionProps {
   onHireClick: () => void;
   onPortfolioClick: () => void;
+  data?: {
+    headline?: string;
+    subtitle?: string;
+    imageUrl?: string;
+    tagline?: string;
+  };
 }
 
-export default function HeroSection({ onHireClick, onPortfolioClick }: HeroSectionProps) {
+export default function HeroSection({ onHireClick, onPortfolioClick, data }: HeroSectionProps) {
   // Avatar images for client proof
   const clientAvatars = [
     "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100",
@@ -33,13 +39,13 @@ export default function HeroSection({ onHireClick, onPortfolioClick }: HeroSecti
         {/* Hello Subtitle */}
         <div className="flex items-center gap-2 mb-2 text-[#fd4a24] font-display font-medium text-sm md:text-base tracking-wide uppercase">
           <span className="w-6 h-[2px] bg-[#fd4a24]"></span>
-          <span>Hello There!</span>
+          <span>{data?.tagline || 'Hello There!'}</span>
         </div>
 
         {/* Main Title Heading */}
         <div className="relative inline-block mb-2 max-w-4xl">
           <h1 className="font-display font-bold text-4xl sm:text-5xl md:text-6xl tracking-tighter text-brand-dark leading-[1.05]">
-            I'm <span className="text-brand-orange relative inline-block">
+            {data?.headline || "I'm"} <span className="text-brand-orange relative inline-block">
               Bevan
               {/* Little red custom sparks / stars icon next to name */}
               <svg 
@@ -55,7 +61,7 @@ export default function HeroSection({ onHireClick, onPortfolioClick }: HeroSecti
 
         {/* Subtitle */}
         <p className="font-display text-base sm:text-lg md:text-xl text-[#5e5e5e] max-w-2xl mx-auto mb-6 tracking-tight">
-          AI/ML Engineer | Full-Stack & Blockchain Developer based in Surabaya, Indonesia
+          {data?.subtitle || 'AI/ML Engineer | Full-Stack & Blockchain Developer based in Surabaya, Indonesia'}
         </p>
 
         {/* Core Hero Grid - Cutout Portrait with Left / Right Floating Panels */}
@@ -104,7 +110,7 @@ export default function HeroSection({ onHireClick, onPortfolioClick }: HeroSecti
             {/* Portrait Image Cutout */}
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-10 w-[280px] sm:w-[380px] md:w-[380px] h-auto pointer-events-none">
               <img
-                src="/images/image.png"
+                src={data?.imageUrl || '/images/image.png'}
                 alt="Bevan Portrait"
                 referrerPolicy="no-referrer"
                 className="w-full h-auto object-cover rounded-3xl transform hover:scale-[1.02] transition-transform duration-500 origin-bottom"

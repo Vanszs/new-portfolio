@@ -1,15 +1,25 @@
 import React from "react";
 import { Check } from "lucide-react";
 
-export default function AboutSection() {
-  const milestones = [
+interface AboutSectionProps {
+  data?: {
+    bio?: string;
+    bioSecond?: string;
+    milestones?: { number: string; label: string }[];
+    coreSkills?: string[];
+    principles?: { title: string; desc: string }[];
+  };
+}
+
+export default function AboutSection({ data }: AboutSectionProps) {
+  const milestones = data?.milestones || [
     { number: "3+", label: "Years Experience" },
     { number: "10+", label: "Projects Delivered" },
     { number: "3", label: "Peer-Reviewed Publications" },
     { number: "4.85/5", label: "Average Satisfaction" }
   ];
 
-  const coreSkills = [
+  const coreSkills = data?.coreSkills || [
     "Machine Learning & LLM Integration",
     "Computer Vision & Sensor Fusion",
     "Full-Stack Web (Next.js / React / TypeScript)",
@@ -36,10 +46,10 @@ export default function AboutSection() {
           
           <div className="lg:col-span-7">
             <p className="text-[#5e5e5e] text-base leading-relaxed mb-6 font-sans">
-              I am Bevan — a Machine Learning Engineer, Full-Stack Developer, and Autonomous Systems Specialist based in Surabaya. With 3+ years of hands-on experience, I have built end-to-end solutions across AI/ML, robotics, blockchain, and web technologies for startups, government contracts, and robotics competitions.
+              {data?.bio || 'I am Bevan — a Machine Learning Engineer, Full-Stack Developer, and Autonomous Systems Specialist based in Surabaya. With 3+ years of hands-on experience, I have built end-to-end solutions across AI/ML, robotics, blockchain, and web technologies for startups, government contracts, and robotics competitions.'}
             </p>
             <p className="text-[#5e5e5e] text-base leading-relaxed font-sans">
-              My approach combines deep technical rigor with rapid iteration: translating complex challenges into production-ready systems. Whether architecting autonomous drones, deploying secure full-stack dashboards, or integrating LLMs, I focus on measurable impact and scalable architecture.
+              {data?.bioSecond || 'My approach combines deep technical rigor with rapid iteration: translating complex challenges into production-ready systems. Whether architecting autonomous drones, deploying secure full-stack dashboards, or integrating LLMs, I focus on measurable impact and scalable architecture.'}
             </p>
           </div>
         </div>
@@ -70,11 +80,11 @@ export default function AboutSection() {
               My Engineering Principles
             </h3>
             <ul className="space-y-4">
-              {[
+              {(data?.principles || [
                 { title: "Production-Ready Code", desc: "Every system is built to run reliably in production: tested, secure, observable, and documented." },
                 { title: "Rapid Iteration with AI", desc: "I leverage AI-assisted workflows to accelerate development while maintaining hands-on quality control." },
                 { title: "Scalable Architecture", desc: "From embedded devices to cloud backends, I architect modular systems that grow with the problem." }
-              ].map((principle, idx) => (
+              ]).map((principle, idx) => (
                 <li key={idx} className="flex flex-col gap-1">
                   <span className="font-display font-bold text-lg text-brand-orange">
                     0{idx + 1}. {principle.title}

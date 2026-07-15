@@ -1,0 +1,147 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String    @id @default(cuid())
+  name           String?
+  email          String    @unique
+  emailVerified  DateTime?
+  image          String?
+  provider       String?
+  role           String    @default("admin")
+  createdAt      DateTime  @default(now())
+  accounts       Account[]
+  sessions       Session[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model HeroConfig {
+  id        String @id @default("default")
+  headline  String
+  subtitle  String
+  imageUrl  String
+  tagline   String
+  updatedAt DateTime @updatedAt
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  order       Int      @default(0)
+  title       String
+  tags        String[]
+  description String
+  image       String?
+
+  @@index([order])
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  order       Int      @default(0)
+  title       String
+  category    String
+  image       String
+  tags        String[]
+  year        String
+  description String
+
+  @@index([order])
+}
+
+model Blog {
+  id          String @id @default(cuid())
+  order       Int    @default(0)
+  title       String
+  category    String
+  date        String
+  readTime    String
+  image       String
+  description String
+
+  @@index([order])
+}
+
+model Testimonial {
+  id      String @id @default(cuid())
+  order   Int    @default(0)
+  name    String
+  role    String
+  company String
+  avatar  String
+  text    String
+  rating  Int
+
+  @@index([order])
+}
+
+model AboutConfig {
+  id          String   @id @default("default")
+  bio         String   @db.Text
+  bioSecond   String?  @db.Text
+  milestones  Json
+  coreSkills  String[]
+  principles  Json
+}
+
+model FooterConfig {
+  id            String @id @default("default")
+  brandText     String @db.Text
+  socialLinks   Json
+  copyrightText String
+}
+
+enum BackupAction {
+  UPDATE
+  DELETE
+}
+
+model EditBackup {
+  id          String       @id @default(cuid())
+  tableName   String
+  recordId    String
+  data        Json
+  action      BackupAction
+  createdAt   DateTime     @default(now())
+
+  @@index([tableName, recordId, createdAt])
+}

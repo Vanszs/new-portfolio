@@ -1,8 +1,22 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
 
-export default function BlogsSection() {
-  const blogs = [
+interface BlogItem {
+  id: string;
+  title: string;
+  category: string;
+  date: string;
+  readTime: string;
+  image: string;
+  description: string;
+}
+
+interface BlogsSectionProps {
+  data?: BlogItem[];
+}
+
+export default function BlogsSection({ data }: BlogsSectionProps) {
+  const blogs = data && data.length > 0 ? data : [
     {
       id: "b1",
       title: "From LLM Prompts to Production: Building AI-Native Apps",

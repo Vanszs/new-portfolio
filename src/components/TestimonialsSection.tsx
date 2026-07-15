@@ -2,7 +2,22 @@ import React from "react";
 import { Star } from "lucide-react";
 import { TESTIMONIALS } from "../data";
 
-export default function TestimonialsSection() {
+interface TestimonialItem {
+  id: string;
+  name: string;
+  role: string;
+  company: string;
+  avatar: string;
+  text: string;
+  rating: number;
+}
+
+interface TestimonialsSectionProps {
+  data?: TestimonialItem[];
+}
+
+export default function TestimonialsSection({ data }: TestimonialsSectionProps) {
+  const testimonials = data && data.length > 0 ? data : TESTIMONIALS;
   return (
     <section id="testimonials" className="py-24 px-6 md:px-12 bg-brand-bg relative z-10 border-t border-[#e5e2da]/40">
       <div className="max-w-6xl mx-auto">
@@ -25,7 +40,7 @@ export default function TestimonialsSection() {
 
         {/* Testimonials Masonry / Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {TESTIMONIALS.map((testimonial) => (
+          {testimonials.map((testimonial) => (
             <div 
               key={testimonial.id}
               className="bg-white border border-[#e5e2da] rounded-3xl p-8 sm:p-10 relative shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"

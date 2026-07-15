@@ -3,9 +3,14 @@ import { ArrowUp } from "lucide-react";
 
 interface FooterProps {
   onContactClick: () => void;
+  data?: {
+    brandText?: string;
+    socialLinks?: { platform: string; url: string }[];
+    copyrightText?: string;
+  };
 }
 
-export default function Footer({ onContactClick }: FooterProps) {
+export default function Footer({ onContactClick, data }: FooterProps) {
   
   const handleBackToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -30,11 +35,10 @@ export default function Footer({ onContactClick }: FooterProps) {
             </span>
           </div>
           <p className="text-sm text-white/55 leading-relaxed max-w-sm">
-            Building end-to-end AI, full-stack, blockchain, and autonomous systems for high-growth teams, government contracts, and robotics competitions.
+            {data?.brandText || 'Building end-to-end AI, full-stack, blockchain, and autonomous systems for high-growth teams, government contracts, and robotics competitions.'}
           </p>
           <div className="flex gap-3 text-xs text-white/60">
-            <span>© {new Date().getFullYear()} Bevan.</span>
-            <span>All rights reserved.</span>
+            <span>{data?.copyrightText || `© ${new Date().getFullYear()} Bevan. All rights reserved.`}</span>
           </div>
         </div>
 

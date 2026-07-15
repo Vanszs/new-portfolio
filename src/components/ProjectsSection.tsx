@@ -2,13 +2,25 @@ import React, { useState, useMemo } from "react";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { PORTFOLIO_PROJECTS } from "../data";
 
+interface ProjectItem {
+  id: string;
+  title: string;
+  category: string;
+  image: string;
+  tags: string[];
+  year: string;
+  description?: string;
+}
+
 interface ProjectsSectionProps {
   onProjectInquire: (projectTitle: string) => void;
+  data?: ProjectItem[];
 }
 
 const ITEMS_PER_PAGE = 6;
 
-export default function ProjectsSection({ onProjectInquire }: ProjectsSectionProps) {
+export default function ProjectsSection({ onProjectInquire, data }: ProjectsSectionProps) {
+  const projects = data && data.length > 0 ? data : PORTFOLIO_PROJECTS;
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [currentPage, setCurrentPage] = useState<number>(1);
 
@@ -26,9 +38,9 @@ export default function ProjectsSection({ onProjectInquire }: ProjectsSectionPro
 
   const filteredProjects = useMemo(() => {
     return selectedCategory === "All"
-      ? PORTFOLIO_PROJECTS
-      : PORTFOLIO_PROJECTS.filter((p) => p.category === selectedCategory);
-  }, [selectedCategory]);
+      ? projects
+      : projects.filter((p) => p.category === selectedCategory);
+  }, [selectedCategory, projects]);
 
   const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE);
 

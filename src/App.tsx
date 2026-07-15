@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
@@ -10,7 +12,21 @@ import TestimonialsSection from "./components/TestimonialsSection";
 import ContactModal from "./components/ContactModal";
 import Footer from "./components/Footer";
 
-export default function App() {
+interface AppData {
+  hero: any;
+  services: any[];
+  projects: any[];
+  blogs: any[];
+  testimonials: any[];
+  about: any;
+  footer: any;
+}
+
+interface AppProps {
+  data: AppData;
+}
+
+export default function App({ data }: AppProps) {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [preselectedService, setPreselectedService] = useState("");
   const [activeSection, setActiveSection] = useState("home");
@@ -69,32 +85,33 @@ export default function App() {
       {/* Main sections layout */}
       <main>
         {/* Hero Section */}
-        <HeroSection 
-          onHireClick={handleHireMeClick} 
-          onPortfolioClick={handlePortfolioClick} 
+        <HeroSection
+          data={data.hero}
+          onHireClick={handleHireMeClick}
+          onPortfolioClick={handlePortfolioClick}
         />
 
         {/* Black Ticker scrolling marquee */}
         <TickerBar />
 
         {/* Services accordion section */}
-        <ServicesSection onServiceActionClick={openContactWithService} />
+        <ServicesSection data={data.services} onServiceActionClick={openContactWithService} />
 
         {/* About milestones and details */}
-        <AboutSection />
+        <AboutSection data={data.about} />
 
         {/* Portfolio / Selected Projects showcase */}
-        <ProjectsSection onProjectInquire={openContactWithService} />
+        <ProjectsSection data={data.projects} onProjectInquire={openContactWithService} />
 
         {/* Blogs / insights publication cards */}
-        <BlogsSection />
+        <BlogsSection data={data.blogs} />
 
         {/* Testimonials and client feedback cards */}
-        <TestimonialsSection />
+        <TestimonialsSection data={data.testimonials} />
       </main>
 
       {/* Footer component */}
-      <Footer onContactClick={() => setIsContactOpen(true)} />
+      <Footer data={data.footer} onContactClick={() => setIsContactOpen(true)} />
 
       {/* Inquire/Hire slide-out Contact Modal */}
       <ContactModal 
