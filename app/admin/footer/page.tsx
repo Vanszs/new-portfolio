@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import AdminLoading from '../components/AdminLoading';
 import type { FooterConfig } from '@prisma/client';
+import { Plus, Trash2 } from 'lucide-react';
 
 export default function FooterAdminPage() {
   const [footer, setFooter] = useState<Partial<FooterConfig>>({
@@ -75,20 +76,67 @@ export default function FooterAdminPage() {
             className="w-full px-4 py-3 rounded-xl border border-[#e5e2da] bg-[#fcfbf9] focus:outline-none focus:border-brand-orange"
           />
         </div>
-        <div>
-          <label className="block text-sm font-semibold text-brand-dark mb-1">Social Links (JSON array)</label>
-          <textarea
-            name="socialLinks"
-            value={JSON.stringify(socialLinks, null, 2)}
-            onChange={(e) => {
-              try {
-                setFooter({ ...footer, socialLinks: JSON.parse(e.target.value) });
-              } catch {}
+
+        <div className="space-y-4">
+          <label className="block text-sm font-semibold text-brand-dark">Social Links</label>
+          <div className="space-y-3">
+            {socialLinks.map((link: any, idx: number) => (
+              <div key={idx} className="flex gap-3 items-start bg-[#fcfbf9] p-4 rounded-2xl border border-[#e5e2da]">
+                <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-xs font-semibold text-[#8c8c8c] mb-1">Platform</label>
+                    <input
+                      type="text"
+                      placeholder="e.g. Instagram"
+                      value={link.platform || ''}
+                      onChange={(e) => {
+                        const newLinks = [...socialLinks];
+                        newLinks[idx] = { ...newLinks[idx], platform: e.target.value };
+                        setFooter({ ...footer, socialLinks: newLinks });
+                      }}
+                      className="w-full px-3 py-2 rounded-lg border border-[#e5e2da] bg-white focus:outline-none focus:border-brand-orange text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-[#8c8c8c] mb-1">URL</label>
+                    <input
+                      type="text"
+                      placeholder="https://..."
+                      value={link.url || ''}
+                      onChange={(e) => {
+                        const newLinks = [...socialLinks];
+                        newLinks[idx] = { ...newLinks[idx], url: e.target.value };
+                        setFooter({ ...footer, socialLinks: newLinks });
+                      }}
+                      className="w-full px-3 py-2 rounded-lg border border-[#e5e2da] bg-white focus:outline-none focus:border-brand-orange text-sm"
+                    />
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const newLinks = socialLinks.filter((_: any, i: number) => i !== idx);
+                    setFooter({ ...footer, socialLinks: newLinks });
+                  }}
+                  className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors mt-5 self-center"
+                  title="Remove Link"
+                >
+                  <Trash2 size={18} />
+                </button>
+              </div>
+            ))}
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              setFooter({ ...footer, socialLinks: [...socialLinks, { platform: '', url: '' }] });
             }}
-            rows={10}
-            className="w-full px-4 py-3 rounded-xl border border-[#e5e2da] bg-[#fcfbf9] focus:outline-none focus:border-brand-orange font-mono text-sm"
-          />
+            className="inline-flex items-center gap-2 px-4 py-2.5 border border-brand-dark text-brand-dark rounded-xl text-sm font-semibold hover:bg-[#f3f2ee] transition-colors"
+          >
+            <Plus size={16} /> Add Social Link
+          </button>
         </div>
+
         <button
           onClick={handleSave}
           disabled={saving}
