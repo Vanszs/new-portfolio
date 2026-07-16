@@ -23,7 +23,7 @@ export default function AdminHeader({ onMenuOpen }: AdminHeaderProps) {
   return (
     <header className="bg-white border-b border-[#e5e2da] px-4 md:px-6 py-4 flex items-center justify-between sticky top-0 z-10">
       <div className="flex items-center gap-3">
-        {/* Hamburger — mobile only */}
+        {/* Hamburger - mobile only */}
         <button
           onClick={onMenuOpen}
           className="md:hidden p-2 rounded-lg text-[#5e5e5e] hover:bg-[#f3f2ee]"

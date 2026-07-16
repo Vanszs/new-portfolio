@@ -8,7 +8,7 @@ const SINGLETON_ID = 'default';
 const TABLE_NAME = 'AboutConfig';
 
 function validateAboutBody(body: Record<string, unknown>): Prisma.AboutConfigUpdateInput {
-  const { bio, bioSecond, milestones, coreSkills, principles } = body;
+  const { bio, bioSecond, milestones, coreSkills, principles, publications, certifications } = body;
   if (typeof bio !== 'string' || bio.trim().length === 0) {
     throw new Error('Missing or invalid field: bio');
   }
@@ -20,6 +20,8 @@ function validateAboutBody(body: Record<string, unknown>): Prisma.AboutConfigUpd
       ? coreSkills.filter((s): s is string => typeof s === 'string')
       : undefined,
     principles: principles as Prisma.InputJsonValue,
+    publications: publications as Prisma.InputJsonValue,
+    certifications: certifications as Prisma.InputJsonValue,
   };
 }
 

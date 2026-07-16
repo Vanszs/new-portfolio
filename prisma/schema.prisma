@@ -115,12 +115,30 @@ model Testimonial {
 }
 
 model AboutConfig {
-  id          String   @id @default("default")
-  bio         String   @db.Text
-  bioSecond   String?  @db.Text
-  milestones  Json
-  coreSkills  String[]
-  principles  Json
+  id             String   @id @default("default")
+  bio            String   @db.Text
+  bioSecond      String?  @db.Text
+  milestones     Json
+  coreSkills     String[]
+  principles     Json
+  publications   Json?
+  certifications Json?
+}
+
+model Experience {
+  id          String   @id @default(cuid())
+  order       Int      @default(0)
+  role        String
+  company     String
+  location    String
+  period      String
+  image       String
+  summary     String
+  description String   @db.Text
+  gallery     String[]
+  tags        String[]
+
+  @@index([order])
 }
 
 model FooterConfig {

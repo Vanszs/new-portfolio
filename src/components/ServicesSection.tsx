@@ -55,7 +55,7 @@ export default function ServicesSection({ onServiceActionClick, data }: Services
           
           <div>
             <p className="text-[#5e5e5e] text-sm sm:text-base leading-relaxed md:max-w-md font-sans">
-              End-to-end engineering across AI/ML, full-stack development, blockchain, and autonomous systems — built for production, performance, and measurable impact.
+              End-to-end engineering across AI/ML, full-stack development, blockchain, and autonomous systems - built for production, performance, and measurable impact.
             </p>
           </div>
         </div>

@@ -2,14 +2,15 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react';
-import { LayoutDashboard, Image, Layers, User, Briefcase, BookOpen, MessageSquare, Share2, LogOut, X } from 'lucide-react';
+import { LayoutDashboard, Image, Layers, User, Briefcase, Folder, BookOpen, MessageSquare, Share2, LogOut, X } from 'lucide-react';
 
 const navItems = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/admin/hero', label: 'Hero', icon: Image },
   { href: '/admin/services', label: 'Services', icon: Layers },
   { href: '/admin/about', label: 'About', icon: User },
-  { href: '/admin/projects', label: 'Projects', icon: Briefcase },
+  { href: '/admin/experience', label: 'Experience', icon: Briefcase },
+  { href: '/admin/projects', label: 'Projects', icon: Folder },
   { href: '/admin/blogs', label: 'Blogs', icon: BookOpen },
   { href: '/admin/testimonials', label: 'Testimonials', icon: MessageSquare },
   { href: '/admin/footer', label: 'Footer', icon: Share2 },
@@ -34,7 +35,7 @@ export default function AdminSidebar({ open, onClose }: AdminSidebarProps) {
             Bevan<span className="text-brand-orange">.</span>
           </span>
         </Link>
-        {/* Close button — mobile only */}
+        {/* Close button - mobile only */}
         <button
           onClick={onClose}
           className="md:hidden p-1 rounded-lg text-[#5e5e5e] hover:bg-[#f3f2ee]"

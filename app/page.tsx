@@ -4,9 +4,10 @@ import App from '@/src/App';
 export const revalidate = 0;
 
 export default async function Home() {
-  const [hero, services, projects, blogs, testimonials, about, footer] = await Promise.all([
+  const [hero, services, experiences, projects, blogs, testimonials, about, footer] = await Promise.all([
     prisma.heroConfig.findUnique({ where: { id: 'default' } }),
     prisma.service.findMany({ orderBy: { order: 'asc' } }),
+    prisma.experience.findMany({ orderBy: { order: 'asc' } }),
     prisma.project.findMany({ orderBy: { order: 'asc' } }),
     prisma.blog.findMany({ orderBy: { order: 'asc' } }),
     prisma.testimonial.findMany({ orderBy: { order: 'asc' } }),
@@ -19,6 +20,7 @@ export default async function Home() {
       data={{
         hero,
         services,
+        experiences,
         projects,
         blogs,
         testimonials,

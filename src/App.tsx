@@ -6,6 +6,7 @@ import HeroSection from "./components/HeroSection";
 import TickerBar from "./components/TickerBar";
 import ServicesSection from "./components/ServicesSection";
 import AboutSection from "./components/AboutSection";
+import ExperienceSection from "./components/ExperienceSection";
 import ProjectsSection from "./components/ProjectsSection";
 import BlogsSection from "./components/BlogsSection";
 import TestimonialsSection from "./components/TestimonialsSection";
@@ -15,6 +16,7 @@ import Footer from "./components/Footer";
 interface AppData {
   hero: any;
   services: any[];
+  experiences: any[];
   projects: any[];
   blogs: any[];
   testimonials: any[];
@@ -34,7 +36,7 @@ export default function App({ data }: AppProps) {
   // Track active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "services", "about", "projects", "blogs", "testimonials"];
+      const sections = ["home", "services", "about", "experience", "projects", "blogs", "testimonials"];
       const scrollPosition = window.scrollY + 200; // Offset for accuracy
 
       for (const section of sections) {
@@ -99,6 +101,9 @@ export default function App({ data }: AppProps) {
 
         {/* About milestones and details */}
         <AboutSection data={data.about} />
+
+        {/* Experience section */}
+        <ExperienceSection data={data.experiences} />
 
         {/* Portfolio / Selected Projects showcase */}
         <ProjectsSection data={data.projects} onProjectInquire={openContactWithService} />

@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { Plus, Pencil, Trash2, ArrowUp, ArrowDown } from 'lucide-react';
+import { Plus, Pencil, Trash2, ArrowUp, ArrowDown, AlertTriangle } from 'lucide-react';
 import Modal from './Modal';
 
 interface CrudListProps<T extends { id: string; order: number }> {
@@ -27,6 +27,10 @@ export default function CrudList<T extends { id: string; order: number }>({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [workingId, setWorkingId] = useState<string | null>(null);
+
+  // Modern component alternatives to confirm() and alert()
+  const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
+  const [pageError, setPageError] = useState<string | null>(null);
 
   const openAdd = () => {
     setEditingItem(null);
@@ -74,19 +78,26 @@ export default function CrudList<T extends { id: string; order: number }>({
     }
   };
 
-  const handleDelete = async (id: string) => {
-    if (!confirm('Are you sure you want to delete this item?')) return;
+  const handleDeleteRequest = (id: string) => {
+    setDeleteConfirmId(id);
+  };
+
+  const handleConfirmDelete = async () => {
+    if (!deleteConfirmId) return;
+    const id = deleteConfirmId;
+    setDeleteConfirmId(null);
     setWorkingId(id);
+    setPageError(null);
     try {
       const res = await fetch(`${apiPath}?id=${id}`, { method: 'DELETE' });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        alert(data.error || 'Failed to delete.');
+        setPageError(data.error || 'Failed to delete.');
       } else {
         onRefresh();
       }
     } catch {
-      alert('Network error. Please try again.');
+      setPageError('Network error. Please try again.');
     } finally {
       setWorkingId(null);
     }
@@ -99,10 +110,10 @@ export default function CrudList<T extends { id: string; order: number }>({
     if (targetIndex < 0 || targetIndex >= items.length) return;
 
     setWorkingId(id);
+    setPageError(null);
     try {
       const currentOrder = items[index].order;
       const targetOrder = items[targetIndex].order;
-      const targetId = items[targetIndex].id;
 
       const currentItem = { ...items[index], order: targetOrder };
       const targetItem = { ...items[targetIndex], order: currentOrder };
@@ -122,20 +133,35 @@ export default function CrudList<T extends { id: string; order: number }>({
 
       if (!res1.ok || !res2.ok) {
         const data = await (res1.ok ? res2 : res1).json().catch(() => ({}));
-        alert(data.error || 'Failed to reorder.');
+        setPageError(data.error || 'Failed to reorder.');
       } else {
         onRefresh();
       }
     } catch {
-      alert('Network error while reordering. Please try again.');
+      setPageError('Network error while reordering. Please try again.');
     } finally {
       setWorkingId(null);
     }
   };
 
-
   return (
     <div>
+      {/* Dynamic Alert Warning Banner */}
+      {pageError && (
+        <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-700 rounded-2xl flex items-center justify-between shadow-sm">
+          <div className="flex items-center gap-2 text-sm font-semibold">
+            <AlertTriangle size={18} />
+            <span>{pageError}</span>
+          </div>
+          <button 
+            onClick={() => setPageError(null)} 
+            className="text-xs font-mono font-bold hover:underline"
+          >
+            DISMISS
+          </button>
+        </div>
+      )}
+
       <div className="flex items-center justify-between mb-6">
         <h2 className="font-display font-bold text-2xl text-brand-dark">{title}</h2>
         <button
@@ -181,8 +207,10 @@ export default function CrudList<T extends { id: string; order: number }>({
                     </div>
                   </td>
                   <td className="px-6 py-4">
-                    <div className="font-display font-bold text-brand-dark">{item.title || item.name}</div>
-                    {item.category && <div className="text-xs text-[#8c8c8c]">{item.category}</div>}
+                    <div className="font-display font-bold text-brand-dark">{item.title || item.name || item.role}</div>
+                    {(item.category || item.company) && (
+                      <div className="text-xs text-[#8c8c8c]">{item.category || item.company}</div>
+                    )}
                   </td>
                   <td className="px-6 py-4 text-right">
                     <div className="flex items-center justify-end gap-2">
@@ -194,7 +222,7 @@ export default function CrudList<T extends { id: string; order: number }>({
                         <Pencil size={16} />
                       </button>
                       <button
-                        onClick={() => handleDelete(item.id)}
+                        onClick={() => handleDeleteRequest(item.id)}
                         disabled={workingId === item.id}
                         className="p-2 hover:bg-red-50 rounded-lg text-[#5e5e5e] hover:text-red-600 transition-colors disabled:opacity-50"
                       >
@@ -209,6 +237,7 @@ export default function CrudList<T extends { id: string; order: number }>({
         </div>
       </div>
 
+      {/* Modern Dialog Form Modal */}
       <Modal isOpen={isModalOpen} onClose={closeModal} title={editingItem ? 'Edit' : 'Add New'}>
         <div className="space-y-4">
           {renderForm(formData, setFormData)}
@@ -226,6 +255,29 @@ export default function CrudList<T extends { id: string; order: number }>({
               className="flex-1 px-4 py-3 bg-brand-dark text-white rounded-xl font-semibold hover:bg-brand-orange transition-colors disabled:opacity-50"
             >
               {loading ? 'Saving...' : 'Save'}
+            </button>
+          </div>
+        </div>
+      </Modal>
+
+      {/* Modern Styled Delete Confirmation Modal */}
+      <Modal isOpen={deleteConfirmId !== null} onClose={() => setDeleteConfirmId(null)} title="Confirm Delete">
+        <div className="space-y-6">
+          <p className="text-neutral-600 text-sm">
+            Are you sure you want to delete this item? This action is permanent and cannot be undone (a backup will be preserved).
+          </p>
+          <div className="flex gap-3">
+            <button
+              onClick={() => setDeleteConfirmId(null)}
+              className="flex-1 px-4 py-3 border border-[#e5e2da] rounded-xl font-semibold text-brand-dark hover:bg-[#f3f2ee] transition-colors"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={handleConfirmDelete}
+              className="flex-1 px-4 py-3 bg-red-600 text-white rounded-xl font-semibold hover:bg-red-700 transition-colors"
+            >
+              Delete
             </button>
           </div>
         </div>

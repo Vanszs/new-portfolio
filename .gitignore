@@ -42,3 +42,7 @@ admin.spec.js
 
 
 /src/generated/prisma
+
+# Agent workspaces
+.agents/
+.ua/

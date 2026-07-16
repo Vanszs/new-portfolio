@@ -13,6 +13,7 @@ export default function Header({ onContactClick, activeSection }: HeaderProps) {
     { label: "Home", href: "#home", id: "home" },
     { label: "Services", href: "#services", id: "services" },
     { label: "About", href: "#about", id: "about" },
+    { label: "Experience", href: "#experience", id: "experience" },
     { label: "Projects", href: "#projects", id: "projects" },
     { label: "Blogs", href: "#blogs", id: "blogs" },
     { label: "Testimonials", href: "#testimonials", id: "testimonials" }

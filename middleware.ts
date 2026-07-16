@@ -12,12 +12,17 @@ export default auth((req) => {
 
   if (isAuthApi) return NextResponse.next();
 
+  // Construct dynamic base URL from request headers to prevent incorrect canonical domain redirects in local dev
+  const proto = req.headers.get('x-forwarded-proto') || 'http';
+  const host = req.headers.get('host') || nextUrl.host;
+  const baseUrl = `${proto}://${host}`;
+
   if (isAdminRoute && !isLoginPage && (!isLoggedIn || !isAdmin)) {
-    return NextResponse.redirect(new URL('/admin/login', nextUrl));
+    return NextResponse.redirect(new URL('/admin/login', baseUrl));
   }
 
   if (isLoginPage && isLoggedIn && isAdmin) {
-    return NextResponse.redirect(new URL('/admin', nextUrl));
+    return NextResponse.redirect(new URL('/admin', baseUrl));
   }
 
   return NextResponse.next();

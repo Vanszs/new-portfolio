@@ -73,7 +73,7 @@ export default function HeroSection({ onHireClick, onPortfolioClick, data }: Her
             <div className="relative pl-6 border-l-2 border-brand-orange max-w-sm">
               <span className="text-4xl text-brand-orange font-serif leading-none absolute left-0 top-0 -translate-x-1/2 -translate-y-2">“</span>
               <p className="text-brand-dark font-medium italic text-sm sm:text-base leading-relaxed text-[#2c2c2c] pt-2">
-                Bevan's full-stack and AI execution accelerated our product delivery—highly recommended!
+                Bevan's full-stack and AI execution accelerated our product delivery - highly recommended!
               </p>
             </div>
 

@@ -5,6 +5,11 @@ import Google from 'next-auth/providers/google';
 import bcrypt from 'bcryptjs';
 import { prisma } from './lib/prisma';
 
+// Override AUTH_URL in local development to prevent redirects to production domain
+if (process.env.NODE_ENV === 'development') {
+  process.env.AUTH_URL = 'http://localhost:3000';
+}
+
 function parseAllowedList(envValue: string | undefined): string[] {
   if (!envValue) return [];
   return envValue
@@ -17,6 +22,7 @@ const allowedGoogleEmails = parseAllowedList(process.env.AUTH_GOOGLE_ALLOWED_EMA
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),
+  trustHost: true,
   providers: [
     Credentials({
       credentials: {

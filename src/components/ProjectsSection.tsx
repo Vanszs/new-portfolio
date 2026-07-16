@@ -65,10 +65,10 @@ export default function ProjectsSection({ onProjectInquire, data }: ProjectsSect
           <div>
             <div className="flex items-center gap-2 mb-3 text-brand-orange font-display font-medium text-sm uppercase tracking-wider">
               <span className="w-5 h-[2px] bg-brand-orange"></span>
-              <span>Selected Works</span>
+              <span>Projects</span>
             </div>
             <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-brand-dark tracking-tighter leading-none">
-              Featured Case Studies
+              Technical Builds & Showcases
             </h2>
           </div>
 
