@@ -23,7 +23,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 img { display: block; max-width: 100%; }
 :where(a, button, input, select, textarea):focus-visible { outline: 2px solid #ededed; outline-offset: 3px; }
 
-.public-site { --z-bg: #050505; --z-card: #050505; --z-text: #ededed; --z-muted: #a1a1aa; --z-line: #222226; --z-soft: #161619; min-height: 100vh; color-scheme: dark; background: #000; color: var(--z-text); font-family: GeistSans, "GeistSans Fallback", Arial, sans-serif; font-size: 16px; line-height: 24px; }
+.public-site { --z-bg: #050505; --z-card: #050505; --z-text: #ededed; --z-muted: #a1a1aa; --z-line: #222226; --z-soft: #161619; min-height: 100vh; color-scheme: dark; background: #000 url("/images/ascii-cloud-bg.webp") no-repeat center top fixed; background-size: cover; color: var(--z-text); font-family: GeistSans, "GeistSans Fallback", Arial, sans-serif; font-size: 16px; line-height: 24px; }
 .public-site a { color: inherit; text-decoration: none; }
 .public-site button { color: inherit; font: inherit; }
 .public-site main { max-width: 100%; margin: 0 auto; background: transparent; }
