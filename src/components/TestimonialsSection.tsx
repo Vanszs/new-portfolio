@@ -1,6 +1,6 @@
 import React from "react";
-import { Star } from "lucide-react";
 import { TESTIMONIALS } from "../data";
+import ImageWithFallback from "./ImageWithFallback";
 
 interface TestimonialItem {
   id: string;
@@ -19,76 +19,8 @@ interface TestimonialsSectionProps {
 export default function TestimonialsSection({ data }: TestimonialsSectionProps) {
   const testimonials = data && data.length > 0 ? data : TESTIMONIALS;
   return (
-    <section id="testimonials" className="py-24 px-6 md:px-12 bg-brand-bg relative z-10 border-t border-[#e5e2da]/40">
-      <div className="max-w-6xl mx-auto">
-        
-        {/* Header Title */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="flex items-center justify-center gap-2 mb-3 text-brand-orange font-display font-medium text-sm uppercase tracking-wider">
-            <span className="w-5 h-[2px] bg-brand-orange"></span>
-            <span>Partner Reviews</span>
-            <span className="w-5 h-[2px] bg-brand-orange"></span>
-          </div>
-          
-          <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-brand-dark tracking-tighter leading-none mb-4">
-            Trusted by Partners
-          </h2>
-          <p className="text-[#5e5e5e] text-sm sm:text-base leading-relaxed">
-            I strive to build partnerships, not just codebases. Here is what product leads and engineering partners say about our collaborations.
-          </p>
-        </div>
-
-        {/* Testimonials Masonry / Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {testimonials.map((testimonial) => (
-            <div 
-              key={testimonial.id}
-              className="bg-white border border-[#e5e2da] rounded-3xl p-8 sm:p-10 relative shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
-            >
-              {/* Quote Mark Decoration */}
-              <div className="absolute top-6 right-8 text-[#f3f2ee]/80 text-7xl font-serif select-none pointer-events-none">
-                ”
-              </div>
-
-              <div>
-                {/* Stars */}
-                <div className="flex gap-1 mb-6 text-brand-orange">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} size={16} fill="currentColor" className="stroke-0" />
-                  ))}
-                </div>
-
-                {/* Review Text */}
-                <p className="text-brand-dark font-display font-medium text-base sm:text-lg leading-relaxed mb-8 relative z-10">
-                  “ {testimonial.text} ”
-                </p>
-              </div>
-
-              {/* Client Info Row */}
-              <div className="flex items-center gap-4 pt-6 border-t border-[#e5e2da]/60">
-                <img
-                  src={testimonial.avatar}
-                  alt={testimonial.name}
-                  width={48}
-                  height={48}
-                  referrerPolicy="no-referrer"
-                  className="w-12 h-12 rounded-full object-cover border border-[#e5e2da]"
-                />
-                <div>
-                  <h4 className="font-display font-bold text-sm sm:text-base text-brand-dark leading-tight">
-                    {testimonial.name}
-                  </h4>
-                  <p className="text-xs sm:text-sm text-[#8c8c8c] font-medium leading-none mt-1">
-                    {testimonial.role} at <span className="text-brand-orange font-bold">{testimonial.company}</span>
-                  </p>
-                </div>
-              </div>
-
-            </div>
-          ))}
-        </div>
-
-      </div>
+    <section id="testimonials" className="border-b border-[#2b302b] px-5 py-20 md:px-10 md:py-28">
+      <div className="mx-auto max-w-5xl"><div className="mb-10 max-w-2xl"><p className="mb-4 font-mono text-[10px] uppercase tracking-[0.2em] text-[#d96a46]">Testimonials</p><h2 className="font-display text-4xl font-semibold tracking-[-0.05em] text-[#ededed] sm:text-5xl">Good work travels through people.</h2></div><div className="border-t border-[#2b302b]">{testimonials.map((testimonial, index) => <figure key={testimonial.id} className="grid grid-cols-[36px_1fr] gap-5 border-b border-[#2b302b] py-7 sm:grid-cols-[48px_1fr_200px] sm:gap-8"><span className="font-mono text-xs text-[#d96a46]">{String(index + 1).padStart(2, "0")}</span><div><blockquote className="max-w-2xl font-display text-xl leading-8 text-[#ededed] sm:text-2xl">“{testimonial.text}”</blockquote><figcaption className="mt-5 flex items-center gap-3"><ImageWithFallback src={testimonial.avatar} alt={testimonial.name} width={36} height={36} className="h-9 w-9 border border-[#2b302b] object-cover grayscale" /><span className="text-sm text-[#9ca39b]"><strong className="font-medium text-[#ededed]">{testimonial.name}</strong><br />{testimonial.role} / {testimonial.company}</span></figcaption></div><span className="hidden self-start font-mono text-[10px] uppercase tracking-[0.1em] text-[#9ca39b] sm:block">{testimonial.rating}/5 rating</span></figure>)}</div></div>
     </section>
   );
 }

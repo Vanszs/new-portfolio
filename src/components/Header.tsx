@@ -6,118 +6,80 @@ interface HeaderProps {
   activeSection: string;
 }
 
+const navItems = [
+  { label: "Home", href: "#home", id: "home" },
+  { label: "Services", href: "#services", id: "services" },
+  { label: "About", href: "#about", id: "about" },
+  { label: "Experience", href: "#experience", id: "experience" },
+  { label: "Projects", href: "#projects", id: "projects" },
+  { label: "Blogs", href: "#blogs", id: "blogs" },
+  { label: "Testimonials", href: "#testimonials", id: "testimonials" },
+];
+
 export default function Header({ onContactClick, activeSection }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const navItems = [
-    { label: "Home", href: "#home", id: "home" },
-    { label: "Services", href: "#services", id: "services" },
-    { label: "About", href: "#about", id: "about" },
-    { label: "Experience", href: "#experience", id: "experience" },
-    { label: "Projects", href: "#projects", id: "projects" },
-    { label: "Blogs", href: "#blogs", id: "blogs" },
-    { label: "Testimonials", href: "#testimonials", id: "testimonials" }
-  ];
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault();
+  const handleNavClick = (event: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    event.preventDefault();
     setMobileMenuOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      const headerOffset = 90;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-brand-bg/80 backdrop-blur-md border-b border-[#e5e2da]/40 px-6 py-4 md:px-12">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Logo */}
-        <a href="#home" onClick={(e) => handleNavClick(e, "home")} className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-full bg-brand-orange flex items-center justify-between px-1.5 py-2 relative overflow-hidden shadow-sm transition-all duration-300 group-hover:scale-105">
-            {/* Custom stylized 'V' white logo element */}
-            <div className="w-full h-full rounded-full border-[3px] border-white flex items-center justify-center">
-              <span className="text-white font-display text-sm font-bold tracking-tighter">B</span>
-            </div>
-          </div>
-          <span className="font-display font-bold text-xl tracking-tight text-brand-dark relative">
-            Bevan<span className="text-brand-orange">.</span>
-          </span>
+    <header className="sticky top-0 z-40 border-b border-[#2b302b] bg-[#0e0f0e]/95 px-5 backdrop-blur-md md:px-10">
+      <div className="mx-auto flex min-h-16 max-w-7xl items-center justify-between gap-6">
+        <a href="#home" onClick={(event) => handleNavClick(event, "home")} className="flex shrink-0 items-center gap-3 text-[#ededed]" aria-label="Bevan home">
+          <span className="flex h-8 w-8 items-center justify-center border border-[#d96a46] font-mono text-xs text-[#d96a46]">B/</span>
+          <span className="font-display text-base font-semibold tracking-tight">Bevan<span className="text-[#d96a46]">.</span></span>
         </a>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => {
-            const isActive = activeSection === item.id;
-            return (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={(e) => handleNavClick(e, item.id)}
-                className={`text-sm font-medium transition-colors duration-300 relative py-1 ${
-                  isActive ? "text-brand-orange font-semibold" : "text-[#5e5e5e] hover:text-brand-dark"
-                }`}
-              >
-                {item.label}
-                {isActive && (
-                  <span className="absolute bottom-0 left-0 w-full h-[2px] bg-brand-orange rounded-full" />
-                )}
-              </a>
-            );
-          })}
+        <nav className="hidden items-center gap-5 lg:flex" aria-label="Primary navigation">
+          {navItems.map((item) => (
+            <a
+              key={item.id}
+              href={item.href}
+              onClick={(event) => handleNavClick(event, item.id)}
+              className={`border-b py-1 text-xs transition-colors ${activeSection === item.id ? "border-[#d96a46] text-[#ededed]" : "border-transparent text-[#9ca39b] hover:text-[#ededed]"}`}
+            >
+              {item.label}
+            </a>
+          ))}
         </nav>
 
-        {/* Right Action */}
-        <div className="hidden md:block">
-          <button
-            id="contact-me-btn"
-            onClick={onContactClick}
-            className="bg-brand-dark hover:bg-brand-orange text-white text-sm font-medium px-6 py-2.5 rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 active:shadow-md"
-          >
-            Contact Me
+        <div className="hidden lg:block">
+          <button onClick={onContactClick} className="border border-[#d96a46] px-4 py-2 font-mono text-[11px] uppercase tracking-[0.14em] text-[#d96a46] transition-colors hover:bg-[#d96a46] hover:text-[#0e0f0e]">
+            Contact
           </button>
         </div>
 
-        {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-brand-dark p-1 hover:bg-[#f3f2ee] rounded-full transition-colors"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          type="button"
+          className="border border-[#2b302b] p-2 text-[#ededed] lg:hidden"
+          onClick={() => setMobileMenuOpen((open) => !open)}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-navigation"
+          aria-label={mobileMenuOpen ? "Close navigation" : "Open navigation"}
         >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
         </button>
       </div>
 
-      {/* Mobile Nav Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-brand-bg border-b border-[#e5e2da] px-6 py-6 shadow-xl flex flex-col gap-5 animate-in fade-in slide-in-from-top-4 duration-200">
-          {navItems.map((item) => {
-            const isActive = activeSection === item.id;
-            return (
+        <div id="mobile-navigation" className="border-t border-[#2b302b] py-4 lg:hidden">
+          <nav className="flex flex-col" aria-label="Mobile navigation">
+            {navItems.map((item) => (
               <a
-                key={item.label}
+                key={item.id}
                 href={item.href}
-                onClick={(e) => handleNavClick(e, item.id)}
-                className={`text-lg font-medium py-1 border-b border-[#e5e2da]/40 ${
-                  isActive ? "text-brand-orange font-bold pl-2 border-l-2 border-l-brand-orange" : "text-[#5e5e5e]"
-                }`}
+                onClick={(event) => handleNavClick(event, item.id)}
+                className={`border-b border-[#2b302b] py-3 font-mono text-xs uppercase tracking-[0.12em] ${activeSection === item.id ? "text-[#d96a46]" : "text-[#9ca39b]"}`}
               >
                 {item.label}
               </a>
-            );
-          })}
-          <button
-            onClick={() => {
-              setMobileMenuOpen(false);
-              onContactClick();
-            }}
-            className="w-full bg-brand-dark text-white text-base font-semibold py-3 rounded-full hover:bg-brand-orange transition-all mt-2"
-          >
-            Contact Me
+            ))}
+          </nav>
+          <button onClick={() => { setMobileMenuOpen(false); onContactClick(); }} className="mt-4 w-full bg-[#d96a46] px-4 py-3 font-mono text-xs uppercase tracking-[0.14em] text-[#0e0f0e]">
+            Contact
           </button>
         </div>
       )}

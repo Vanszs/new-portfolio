@@ -1,129 +1,139 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Header from "./components/Header";
-import HeroSection from "./components/HeroSection";
-import TickerBar from "./components/TickerBar";
-import ServicesSection from "./components/ServicesSection";
-import AboutSection from "./components/AboutSection";
-import ExperienceSection from "./components/ExperienceSection";
-import ProjectsSection from "./components/ProjectsSection";
-import BlogsSection from "./components/BlogsSection";
-import TestimonialsSection from "./components/TestimonialsSection";
+import React, { useEffect, useState } from "react";
 import ContactModal from "./components/ContactModal";
-import Footer from "./components/Footer";
+import ContributionsSection from "./components/zickrian/ContributionsSection";
+import ExperienceList from "./components/zickrian/ExperienceList";
+import MainNav from "./components/zickrian/MainNav";
+import ProfileHeader from "./components/zickrian/ProfileHeader";
+import ProjectsList from "./components/zickrian/ProjectsList";
+import StackSection from "./components/zickrian/StackSection";
+import AwardsSection from "./components/zickrian/AwardsSection";
+import PublicationsSection from "./components/zickrian/PublicationsSection";
+import CertificationsSection from "./components/zickrian/CertificationsSection";
+import ZickrianFooter from "./components/zickrian/ZickrianFooter";
+import SectionTitle from "./components/zickrian/SectionTitle";
+import type { ZickrianExperience, ZickrianProject } from "./components/zickrian/types";
 
-interface AppData {
-  hero: any;
-  services: any[];
-  experiences: any[];
-  projects: any[];
-  blogs: any[];
-  testimonials: any[];
-  about: any;
-  footer: any;
+import type { Project, Service, SocialLink, Testimonial } from "./types";
+
+interface HeroData {
+  headline: string;
+  subtitle: string;
+  imageUrl: string;
+  tagline: string;
+}
+
+interface ExperienceData {
+  id: string;
+  role: string;
+  company: string;
+  location: string;
+  period: string;
+  image: string;
+  summary: string;
+  description: string;
+  gallery: string[];
+  tags: string[];
+}
+
+interface BlogData {
+  id: string;
+  title: string;
+  category: string;
+  date: string;
+  readTime: string;
+  image: string;
+  description: string;
+}
+
+export interface AboutData {
+  bio: string;
+  bioSecond: string | null;
+  milestones: { number: string; label: string }[];
+  publications: { title: string; desc?: string }[];
+  principles: { title: string; desc: string }[];
+  coreSkills: string[];
+  certifications: string[];
+}
+
+export interface FooterData {
+  brandText: string;
+  socialLinks: SocialLink[];
+  copyrightText: string;
+}
+
+export interface AppData {
+  hero: HeroData | null;
+  services: Service[];
+  experiences: ExperienceData[];
+  projects: Project[];
+  blogs: BlogData[];
+  testimonials: Testimonial[];
+  about: AboutData | null;
+  footer: FooterData | null;
 }
 
 interface AppProps {
   data: AppData;
 }
 
+const fallbackProjects: ZickrianProject[] = [
+  ["owie-motion", "Owie Motion", "2026"],
+  ["nasdem-dashboard", "NasDem Election Dashboard", "2026"],
+  ["smart-city", "Surabaya Smart City Apps", "2025"],
+  ["drone", "Autonomous Drone Delivery", "2025"],
+  ["landslide", "Landslide Detection IoT", "2025"],
+  ["diamante", "Diamante NFT Marketplace", "2025"],
+  ["arcalis", "ArcalisAI LLM Pipeline", "2025"],
+  ["solana", "Solana Migration Contracts", "2025"],
+  ["carv", "Carv Community Operations", "2023-2025"],
+  ["blockhood", "BlockHood Web3 Community", "2025"],
+  ["venimee", "Venimee Discord Channel", "2024-2026"],
+  ["asv", "Autonomous Surface Vehicle", "2022-2024"],
+  ["bangkit", "Bangkit IoT Computer Vision", "2024"],
+].map(([id, title, year]) => ({ id, title, year, category: "AI / Full-stack", description: "", tags: [], image: null }));
+
 export default function App({ data }: AppProps) {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [preselectedService, setPreselectedService] = useState("");
   const [activeSection, setActiveSection] = useState("home");
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
-  // Track active section on scroll
   useEffect(() => {
+    const sections = ["home", "experience", "projects", "blog", "gallery", "stack"];
     const handleScroll = () => {
-      const sections = ["home", "services", "about", "experience", "projects", "blogs", "testimonials"];
-      const scrollPosition = window.scrollY + 200; // Offset for accuracy
-
+      const scrollPosition = window.scrollY + 160;
       for (const section of sections) {
-        const el = document.getElementById(section);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(section);
-            break;
-          }
+        const element = document.getElementById(section);
+        if (element && scrollPosition >= element.offsetTop && scrollPosition < element.offsetTop + element.offsetHeight) {
+          setActiveSection(section);
+          break;
         }
       }
     };
-
-    window.addEventListener("scroll", handleScroll);
-    // Initial call
     handleScroll();
-    
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const openContactWithService = (serviceTitle: string) => {
-    setPreselectedService(serviceTitle === "All Services" ? "" : serviceTitle);
-    setIsContactOpen(true);
-  };
+  const experiences: ZickrianExperience[] = [];
+  const projects: ZickrianProject[] = fallbackProjects;
 
-  const handleHireMeClick = () => {
+  const openChat = () => {
+    setIsSettingsOpen(false);
     setPreselectedService("");
     setIsContactOpen(true);
   };
 
-  const handlePortfolioClick = () => {
-    const el = document.getElementById("projects");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
+  useEffect(() => {
+    if (!isSettingsOpen) return;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsSettingsOpen(false);
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isSettingsOpen]);
 
-  return (
-    <div className="relative min-h-screen bg-brand-bg text-brand-dark selection:bg-brand-orange selection:text-white">
-      {/* Sticky top navigation bar */}
-      <Header 
-        onContactClick={() => setIsContactOpen(true)} 
-        activeSection={activeSection} 
-      />
-
-      {/* Main sections layout */}
-      <main>
-        {/* Hero Section */}
-        <HeroSection
-          data={data.hero}
-          onHireClick={handleHireMeClick}
-          onPortfolioClick={handlePortfolioClick}
-        />
-
-        {/* Black Ticker scrolling marquee */}
-        <TickerBar />
-
-        {/* Services accordion section */}
-        <ServicesSection data={data.services} onServiceActionClick={openContactWithService} />
-
-        {/* About milestones and details */}
-        <AboutSection data={data.about} />
-
-        {/* Experience section */}
-        <ExperienceSection data={data.experiences} />
-
-        {/* Portfolio / Selected Projects showcase */}
-        <ProjectsSection data={data.projects} onProjectInquire={openContactWithService} />
-
-        {/* Blogs / insights publication cards */}
-        <BlogsSection data={data.blogs} />
-
-        {/* Testimonials and client feedback cards */}
-        <TestimonialsSection data={data.testimonials} />
-      </main>
-
-      {/* Footer component */}
-      <Footer data={data.footer} onContactClick={() => setIsContactOpen(true)} />
-
-      {/* Inquire/Hire slide-out Contact Modal */}
-      <ContactModal 
-        isOpen={isContactOpen} 
-        onClose={() => setIsContactOpen(false)} 
-        preselectedService={preselectedService} 
-      />
-    </div>
-  );
+  return <div className="public-site"><a className="skip-link" href="#main">Skip to content</a><main id="main"><div className="zickrian-shell" id="home"><ProfileHeader /><MainNav activeSection={activeSection} onChat={openChat} onSettings={() => setIsSettingsOpen((value) => !value)} />{isSettingsOpen && <div className="zickrian-settings" role="dialog" aria-label="Settings"><button type="button">EN</button><button type="button">ID</button><button type="button" onClick={() => setIsSettingsOpen(false)} aria-label="Close settings">×</button></div>}<div className="zickrian-content"><p className="zickrian-intro">A few chapters of building, learning, and turning technical curiosity into useful systems.</p><ExperienceList experiences={experiences} /><ProjectsList projects={projects} /><StackSection /><ContributionsSection /><AwardsSection /><PublicationsSection /><CertificationsSection /></div></div></main><ZickrianFooter /><ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} preselectedService={preselectedService} /></div>;
 }

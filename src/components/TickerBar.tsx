@@ -1,30 +1,19 @@
 import React from "react";
 
+const capabilities = ["AI / ML", "Full-stack development", "Blockchain", "Autonomous systems", "IoT / computer vision", "Mobile apps"];
+
 export default function TickerBar() {
-  const categories = [
-    { name: "AI / ML", icon: "✦" },
-    { name: "Full-Stack Development", icon: "✦" },
-    { name: "Blockchain", icon: "✦" },
-    { name: "Autonomous Systems", icon: "✦" },
-    { name: "IoT & Computer Vision", icon: "✦" },
-    { name: "Mobile Apps", icon: "✦" }
-  ];
-
-  // Repeat items to ensure smooth infinite wrap-around
-  const repeatedItems = [...categories, ...categories, ...categories, ...categories];
-
   return (
-    <div className="w-full bg-brand-dark py-5 overflow-hidden border-y border-brand-dark relative z-10 select-none">
-      <div className="flex whitespace-nowrap">
-        <div className="animate-marquee flex gap-12 items-center text-white font-display text-lg md:text-2xl font-bold tracking-tight uppercase">
-          {repeatedItems.map((item, index) => (
-            <div key={index} className="flex items-center gap-12">
-              <span>{item.name}</span>
-              <span className="text-brand-orange text-xl md:text-2xl">{item.icon}</span>
-            </div>
-          ))}
-        </div>
+    <section aria-label="Capabilities" className="border-b border-[#2b302b] bg-[#151715] px-5 py-5 md:px-10">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[10px] uppercase tracking-[0.14em] text-[#9ca39b]">
+        <span className="mr-2 text-[#d96a46]">Capability index</span>
+        {capabilities.map((capability, index) => (
+          <React.Fragment key={capability}>
+            <span className="text-[#ededed]">{capability}</span>
+            {index < capabilities.length - 1 && <span className="text-[#d96a46]" aria-hidden="true">/</span>}
+          </React.Fragment>
+        ))}
       </div>
-    </div>
+    </section>
   );
 }

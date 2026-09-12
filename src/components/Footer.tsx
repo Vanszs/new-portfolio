@@ -1,133 +1,23 @@
 import React from "react";
-import { ArrowUp } from "lucide-react";
+import { ArrowUpRight, ArrowUp } from "lucide-react";
 
 interface FooterProps {
   onContactClick: () => void;
-  data?: {
-    brandText?: string;
-    socialLinks?: { platform: string; url: string }[];
-    copyrightText?: string;
-  };
+  data?: { brandText?: string; socialLinks?: { platform: string; url: string }[]; copyrightText?: string };
 }
 
+const links = [
+  { label: "Home", href: "#home" },
+  { label: "Services", href: "#services" },
+  { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
+  { label: "Blogs", href: "#blogs" },
+];
+
 export default function Footer({ onContactClick, data }: FooterProps) {
-  
-  const handleBackToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
+  const scrollTo = (event: React.MouseEvent<HTMLAnchorElement>, id: string) => { event.preventDefault(); document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }); };
   return (
-    <footer className="bg-brand-dark text-[#8c8c8c] border-t border-white/5 relative z-10">
-      
-      {/* Top Footer Callout Area */}
-      <div className="max-w-6xl mx-auto px-6 md:px-12 pt-20 pb-16 grid grid-cols-1 md:grid-cols-12 gap-12 border-b border-white/5">
-        
-        {/* Brand Column */}
-        <div className="md:col-span-5 flex flex-col gap-6">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-[#fd4a24] flex items-center justify-center relative overflow-hidden">
-              <div className="w-full h-full rounded-full border-[2.5px] border-white flex items-center justify-center">
-                <span className="text-white font-display text-xs font-bold tracking-tighter">B</span>
-              </div>
-            </div>
-            <span className="font-display font-bold text-lg text-white tracking-tight">
-              Bevan<span className="text-brand-orange">.</span>
-            </span>
-          </div>
-          <p className="text-sm text-white/55 leading-relaxed max-w-sm">
-            {data?.brandText || 'Building end-to-end AI, full-stack, blockchain, and autonomous systems for high-growth teams, government contracts, and robotics competitions.'}
-          </p>
-          <div className="flex gap-3 text-xs text-white/60">
-            <span>{data?.copyrightText || `© ${new Date().getFullYear()} Bevan. All rights reserved.`}</span>
-          </div>
-        </div>
-
-        {/* Quick Links Column */}
-        <div className="md:col-span-3">
-          <h4 className="text-xs font-mono font-bold uppercase text-white tracking-widest mb-6">
-            Explore Portfolio
-          </h4>
-          <ul className="space-y-3.5 text-sm font-semibold">
-            {[
-              { label: "Home", href: "#home" },
-              { label: "My Services", href: "#services" },
-              { label: "About Experience", href: "#about" },
-              { label: "Case Studies", href: "#projects" },
-              { label: "Engineering Blog", href: "#blogs" }
-            ].map((link, idx) => (
-              <li key={idx}>
-                <a 
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const el = document.getElementById(link.href.slice(1));
-                    if (el) el.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  className="hover:text-white transition-colors"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Contact/Inquire Column */}
-        <div className="md:col-span-4 flex flex-col gap-6">
-          <h4 className="text-xs font-mono font-bold uppercase text-white tracking-widest">
-            Let's Collaborate
-          </h4>
-          <div className="flex flex-col gap-3">
-            <p className="text-sm text-white/55">
-              Have an upcoming AI, web, or autonomous systems project? Let's discuss your technical sprint together.
-            </p>
-            <a 
-              href="#"
-              onClick={(e) => { e.preventDefault(); onContactClick(); }}
-              className="text-sm font-bold text-white hover:text-brand-orange transition-colors"
-            >
-              Open Contact Form
-            </a>
-          </div>
-          
-          {/* Newsletter signup */}
-          <form 
-            onSubmit={(e) => { e.preventDefault(); alert("Successfully subscribed to newsletter!"); }}
-            className="flex gap-2 w-full max-w-md mt-2"
-          >
-            <input 
-              type="email" 
-              required
-              placeholder="Join tech digest..."
-              className="bg-white/5 hover:bg-white/10 text-white placeholder:text-[#5e5e5e] text-xs px-4 py-2.5 rounded-xl border border-white/10 outline-none w-full focus:border-[#fd4a24] transition-all"
-            />
-            <button 
-              type="submit"
-              className="bg-[#fd4a24] hover:bg-[#e03d15] text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-md transition-colors shrink-0"
-            >
-              Subscribe
-            </button>
-          </form>
-        </div>
-
-      </div>
-
-      {/* Bottom Legal bar */}
-      <div className="max-w-6xl mx-auto px-6 md:px-12 py-8 flex items-center justify-between text-xs text-white/35">
-        <div>
-          <span>Crafted with precision in Next.js, React & Tailwind CSS.</span>
-        </div>
-        <button 
-          onClick={handleBackToTop}
-          className="flex items-center gap-2 hover:text-white text-xs font-bold transition-colors group"
-        >
-          <span>BACK TO TOP</span>
-          <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:-translate-y-1 transition-transform">
-            <ArrowUp size={12} />
-          </div>
-        </button>
-      </div>
-
-    </footer>
+    <footer className="bg-[#0e0f0e] px-5 py-14 md:px-10 md:py-20"><div className="mx-auto max-w-6xl"><div className="grid grid-cols-1 gap-12 border-b border-[#2b302b] pb-12 md:grid-cols-[1.2fr_0.8fr_0.8fr] md:gap-16"><div><div className="flex items-center gap-3"><span className="flex h-8 w-8 items-center justify-center border border-[#d96a46] font-mono text-xs text-[#d96a46]">B/</span><span className="font-display text-base font-semibold text-[#ededed]">Bevan<span className="text-[#d96a46]">.</span></span></div><p className="mt-6 max-w-sm text-sm leading-7 text-[#9ca39b]">{data?.brandText || "Building end-to-end AI, full-stack, blockchain, and autonomous systems for teams with real constraints."}</p></div><nav aria-label="Footer navigation"><h2 className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#d96a46]">Navigate</h2><div className="mt-5 grid grid-cols-2 gap-x-6 gap-y-3">{links.map((link) => <a key={link.href} href={link.href} onClick={(event) => scrollTo(event, link.href.slice(1))} className="text-sm text-[#9ca39b] hover:text-[#ededed]">{link.label}</a>)}</div></nav><div><h2 className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#d96a46]">Contact</h2><button type="button" onClick={onContactClick} className="mt-5 inline-flex items-center gap-2 border-b border-[#9ca39b] pb-1 text-sm text-[#ededed] hover:border-[#d96a46] hover:text-[#d96a46]">Open contact form <ArrowUpRight size={14} /></button>{data?.socialLinks && data.socialLinks.length > 0 && <div className="mt-6 flex flex-wrap gap-4">{data.socialLinks.filter((link) => link.url).map((link) => <a key={link.platform} href={link.url} target="_blank" rel="noreferrer" className="font-mono text-[10px] uppercase tracking-[0.1em] text-[#9ca39b] hover:text-[#ededed]">{link.platform}</a>)}</div>}</div></div><div className="flex flex-col gap-5 pt-7 text-xs text-[#9ca39b] sm:flex-row sm:items-center sm:justify-between"><span>{data?.copyrightText || `© ${new Date().getFullYear()} Bevan. All rights reserved.`}</span><button type="button" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="inline-flex items-center gap-2 self-start font-mono text-[10px] uppercase tracking-[0.12em] hover:text-[#ededed] sm:self-auto">Back to top <ArrowUp size={14} /></button></div></div></footer>
   );
 }

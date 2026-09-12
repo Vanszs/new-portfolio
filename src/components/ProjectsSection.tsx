@@ -1,6 +1,7 @@
-import React, { useState, useMemo } from "react";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import React, { useMemo, useState } from "react";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { PORTFOLIO_PROJECTS } from "../data";
+import ImageWithFallback from "./ImageWithFallback";
 
 interface ProjectItem {
   id: string;
@@ -18,195 +19,35 @@ interface ProjectsSectionProps {
 }
 
 const ITEMS_PER_PAGE = 6;
+const categories = ["All", "Web App", "Mobile App", "Autonomous Systems", "Robotics", "AI/ML", "IoT", "Blockchain", "Community"];
 
 export default function ProjectsSection({ onProjectInquire, data }: ProjectsSectionProps) {
   const projects = data && data.length > 0 ? data : PORTFOLIO_PROJECTS;
-  const [selectedCategory, setSelectedCategory] = useState<string>("All");
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [currentPage, setCurrentPage] = useState(1);
+  const filteredProjects = useMemo(() => selectedCategory === "All" ? projects : projects.filter((project) => project.category === selectedCategory), [projects, selectedCategory]);
+  const totalPages = Math.max(1, Math.ceil(filteredProjects.length / ITEMS_PER_PAGE));
+  const paginatedProjects = useMemo(() => filteredProjects.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE), [filteredProjects, currentPage]);
+  const featuredProject = paginatedProjects[0];
+  const compactProjects = paginatedProjects.slice(1);
 
-  const categories = [
-    "All",
-    "Web App",
-    "Mobile App",
-    "Autonomous Systems",
-    "Robotics",
-    "AI/ML",
-    "IoT",
-    "Blockchain",
-    "Community",
-  ];
-
-  const filteredProjects = useMemo(() => {
-    return selectedCategory === "All"
-      ? projects
-      : projects.filter((p) => p.category === selectedCategory);
-  }, [selectedCategory, projects]);
-
-  const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE);
-
-  const paginatedProjects = useMemo(() => {
-    const start = (currentPage - 1) * ITEMS_PER_PAGE;
-    return filteredProjects.slice(start, start + ITEMS_PER_PAGE);
-  }, [filteredProjects, currentPage]);
-
-  const handleCategoryClick = (category: string) => {
-    setSelectedCategory(category);
-    setCurrentPage(1);
-  };
+  const selectCategory = (category: string) => { setSelectedCategory(category); setCurrentPage(1); };
 
   return (
-    <section
-      id="projects"
-      className="py-24 px-6 md:px-12 bg-brand-bg relative z-10 border-t border-[#e5e2da]/40"
-    >
-      <div className="max-w-6xl mx-auto">
-        {/* Header Title */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-          <div>
-            <div className="flex items-center gap-2 mb-3 text-brand-orange font-display font-medium text-sm uppercase tracking-wider">
-              <span className="w-5 h-[2px] bg-brand-orange"></span>
-              <span>Projects</span>
-            </div>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-brand-dark tracking-tighter leading-none">
-              Technical Builds & Showcases
-            </h2>
-          </div>
+    <section id="projects" className="border-b border-[#2b302b] px-5 py-20 md:px-10 md:py-28">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-10 flex flex-col gap-7 lg:flex-row lg:items-end lg:justify-between"><div><p className="mb-4 font-mono text-[10px] uppercase tracking-[0.2em] text-[#d96a46]">Selected work</p><h2 className="font-display text-4xl font-semibold tracking-[-0.05em] text-[#ededed] sm:text-5xl">Projects with a job to do.</h2></div><div className="flex flex-wrap gap-x-4 gap-y-2 lg:max-w-xl lg:justify-end">{categories.map((category) => <button type="button" key={category} onClick={() => selectCategory(category)} className={`border-b py-1 font-mono text-[10px] uppercase tracking-[0.1em] transition-colors ${selectedCategory === category ? "border-[#d96a46] text-[#d96a46]" : "border-transparent text-[#9ca39b] hover:border-[#9ca39b] hover:text-[#ededed]"}`}>{category}</button>)}</div></div>
 
-          {/* Category Filter Pills */}
-          <div className="flex flex-wrap gap-2 md:justify-end">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => handleCategoryClick(category)}
-                className={`text-xs font-semibold px-4 py-2 rounded-full transition-all duration-300 ${
-                  selectedCategory === category
-                    ? "bg-brand-dark text-white shadow-md"
-                    : "bg-[#f3f2ee] hover:bg-[#eae8df] text-[#5e5e5e] hover:text-brand-dark"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-        </div>
+        {featuredProject ? <>
+          <article className="grid grid-cols-1 border-y border-[#2b302b] bg-[#151715] lg:grid-cols-[1.05fr_0.95fr]">
+            <div className="aspect-[4/3] overflow-hidden border-b border-[#2b302b] lg:border-b-0 lg:border-r"><ImageWithFallback src={featuredProject.image} alt={featuredProject.title} className="h-full w-full object-cover grayscale transition-[filter] duration-500 hover:grayscale-0" /></div>
+            <div className="flex flex-col justify-between p-6 sm:p-9"><div><div className="flex justify-between gap-4 font-mono text-[10px] uppercase tracking-[0.13em] text-[#9ca39b]"><span>Featured / {featuredProject.category}</span><span>{featuredProject.year}</span></div><h3 className="mt-8 max-w-md font-display text-3xl font-medium tracking-[-0.04em] text-[#ededed] sm:text-4xl">{featuredProject.title}</h3><p className="mt-5 max-w-md text-sm leading-7 text-[#9ca39b]">{featuredProject.description}</p></div><div className="mt-10 flex flex-wrap items-center justify-between gap-5 border-t border-[#2b302b] pt-5"><div className="flex flex-wrap gap-x-4 gap-y-2 font-mono text-[10px] uppercase tracking-[0.1em] text-[#ededed]">{featuredProject.tags.map((tag) => <span key={tag}>{tag}</span>)}</div><button type="button" onClick={() => onProjectInquire(featuredProject.title)} className="inline-flex items-center gap-2 border-b border-[#d96a46] pb-1 font-mono text-[10px] uppercase tracking-[0.12em] text-[#d96a46] hover:text-[#ededed]">Discuss project <ArrowUpRight size={14} /></button></div></div>
+          </article>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          {paginatedProjects.map((project) => (
-            <div
-              key={project.id}
-              className="group flex flex-col bg-white border border-[#e5e2da] rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500"
-            >
-              {/* Image Area */}
-              <div className="relative overflow-hidden aspect-[4/3] bg-[#f3f2ee]">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700"
-                />
+          {compactProjects.length > 0 && <div className="mt-10 border-t border-[#2b302b]">{compactProjects.map((project, index) => <article key={project.id} className="grid grid-cols-[34px_1fr_auto] gap-4 border-b border-[#2b302b] py-5 sm:grid-cols-[44px_1fr_150px_auto] sm:gap-6"><span className="font-mono text-xs text-[#d96a46]">{String(index + 2).padStart(2, "0")}</span><div><h3 className="font-display text-base font-medium text-[#ededed]">{project.title}</h3><p className="mt-1 text-sm text-[#9ca39b]">{project.category} <span className="px-2 text-[#d96a46]">/</span> {project.tags.join(", ")}</p></div><span className="hidden font-mono text-[10px] uppercase tracking-[0.1em] text-[#9ca39b] sm:block">{project.year}</span><button type="button" onClick={() => onProjectInquire(project.title)} className="text-[#9ca39b] hover:text-[#d96a46]" aria-label={`Discuss ${project.title}`}><ArrowUpRight size={17} /></button></article>)}</div>}
+        </> : <div className="border border-dashed border-[#2b302b] p-10 text-center"><p className="text-sm text-[#9ca39b]">No projects found in this category.</p><button type="button" onClick={() => selectCategory("All")} className="mt-4 border-b border-[#d96a46] pb-1 font-mono text-[10px] uppercase tracking-[0.12em] text-[#d96a46]">Reset filters</button></div>}
 
-                {/* Overlay Badge for Category */}
-                <span className="absolute top-4 left-4 bg-brand-dark text-white font-display text-[11px] font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
-                  {project.category}
-                </span>
-
-                {/* Hover CTA overlay */}
-                <div className="absolute inset-0 bg-brand-dark/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <button
-                    onClick={() => onProjectInquire(project.title)}
-                    className="bg-white text-brand-dark font-display font-semibold text-sm px-5 py-3 rounded-full flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 hover:bg-[#fd4a24] hover:text-white"
-                  >
-                    <span>Inquire About Project</span>
-                    <ArrowRight size={14} className="stroke-[2.5]" />
-                  </button>
-                </div>
-              </div>
-
-              {/* Text Area */}
-              <div className="p-6 sm:p-8 flex flex-col justify-between flex-grow">
-                <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-[11px] font-mono text-[#8c8c8c] font-semibold uppercase tracking-widest">
-                      PROJECT / {project.year}
-                    </span>
-                  </div>
-                  <h3 className="font-display font-bold text-xl sm:text-2xl text-brand-dark mb-2 tracking-tight group-hover:text-[#fd4a24] transition-colors">
-                    {project.title}
-                  </h3>
-                  {project.description && (
-                    <p className="text-[#5e5e5e] text-sm leading-relaxed mb-4 line-clamp-3">
-                      {project.description}
-                    </p>
-                  )}
-                </div>
-
-                <div className="flex flex-wrap gap-1.5 pt-4 border-t border-[#e5e2da]/60">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="bg-[#f3f2ee] text-[#5e5e5e] text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Empty State if No Projects found */}
-        {filteredProjects.length === 0 && (
-          <div className="w-full py-20 text-center bg-[#f3f2ee]/30 rounded-3xl border border-dashed border-[#e5e2da] flex flex-col items-center justify-center">
-            <p className="text-[#5e5e5e] text-base font-medium mb-2">
-              No projects found in this category.
-            </p>
-            <button
-              onClick={() => handleCategoryClick("All")}
-              className="text-brand-orange hover:underline font-semibold text-sm"
-            >
-              Reset Filters
-            </button>
-          </div>
-        )}
-
-        {/* Pagination */}
-        {totalPages > 1 && (
-          <div className="flex items-center justify-center gap-2">
-            <button
-              onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
-              disabled={currentPage === 1}
-              className="w-10 h-10 rounded-full border border-[#e5e2da] flex items-center justify-center text-brand-dark hover:bg-brand-dark hover:text-white hover:border-brand-dark transition-all disabled:opacity-40 disabled:cursor-not-allowed"
-              aria-label="Previous page"
-            >
-              <ChevronLeft size={18} />
-            </button>
-
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-              <button
-                key={page}
-                onClick={() => setCurrentPage(page)}
-                className={`w-10 h-10 rounded-full text-sm font-semibold transition-all ${
-                  currentPage === page
-                    ? "bg-brand-dark text-white"
-                    : "border border-[#e5e2da] text-brand-dark hover:bg-[#f3f2ee]"
-                }`}
-              >
-                {page}
-              </button>
-            ))}
-
-            <button
-              onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
-              disabled={currentPage === totalPages}
-              className="w-10 h-10 rounded-full border border-[#e5e2da] flex items-center justify-center text-brand-dark hover:bg-brand-dark hover:text-white hover:border-brand-dark transition-all disabled:opacity-40 disabled:cursor-not-allowed"
-              aria-label="Next page"
-            >
-              <ChevronRight size={18} />
-            </button>
-          </div>
-        )}
+        {totalPages > 1 && <div className="mt-8 flex items-center gap-2"><button type="button" onClick={() => setCurrentPage((page) => Math.max(1, page - 1))} disabled={currentPage === 1} className="border border-[#2b302b] p-2 text-[#9ca39b] hover:border-[#d96a46] hover:text-[#d96a46] disabled:opacity-35" aria-label="Previous projects page"><ChevronLeft size={16} /></button>{Array.from({ length: totalPages }, (_, index) => index + 1).map((page) => <button type="button" key={page} onClick={() => setCurrentPage(page)} className={`border px-3 py-2 font-mono text-xs ${currentPage === page ? "border-[#d96a46] text-[#d96a46]" : "border-[#2b302b] text-[#9ca39b] hover:border-[#ededed]"}`} aria-current={currentPage === page ? "page" : undefined}>{String(page).padStart(2, "0")}</button>)}<button type="button" onClick={() => setCurrentPage((page) => Math.min(totalPages, page + 1))} disabled={currentPage === totalPages} className="border border-[#2b302b] p-2 text-[#9ca39b] hover:border-[#d96a46] hover:text-[#d96a46] disabled:opacity-35" aria-label="Next projects page"><ChevronRight size={16} /></button></div>}
       </div>
     </section>
   );

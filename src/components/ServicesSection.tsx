@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { X, ArrowRight } from "lucide-react";
+import { ArrowUpRight, ChevronDown } from "lucide-react";
 import { SERVICES } from "../data";
+import ImageWithFallback from "./ImageWithFallback";
 
 interface ServiceItem {
   id: string;
@@ -18,178 +18,59 @@ interface ServicesSectionProps {
 
 export default function ServicesSection({ onServiceActionClick, data }: ServicesSectionProps) {
   const services = data && data.length > 0 ? data : SERVICES;
-  // Initial state has '02' (Full-Stack Web & Mobile Development) expanded
   const [expandedId, setExpandedId] = useState<string | null>("02");
 
-  const toggleExpand = (id: string) => {
-    if (expandedId === id) {
-      setExpandedId(null);
-    } else {
-      setExpandedId(id);
-    }
-  };
-
   return (
-    <section id="services" className="py-24 px-6 md:px-12 bg-brand-bg relative z-10">
-      <div className="max-w-6xl mx-auto">
-        
-        {/* Section Header */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-end mb-16">
-          <div>
-            {/* Specialization indicator */}
-            <div className="flex items-center gap-2 mb-3 text-brand-orange font-display font-medium text-sm uppercase tracking-wider">
-              <span className="w-5 h-[2px] bg-brand-orange"></span>
-              <span>My Specialization</span>
-            </div>
-            
-            {/* Title with sparkles */}
-            <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-brand-dark tracking-tighter relative inline-block">
-              Services <span className="text-brand-orange relative">
-                I Provide
-                <svg className="absolute -top-1 -right-5 w-4 h-4 text-brand-orange animate-pulse" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" />
-                </svg>
-              </span>
-            </h2>
-          </div>
-          
-          <div>
-            <p className="text-[#5e5e5e] text-sm sm:text-base leading-relaxed md:max-w-md font-sans">
-              End-to-end engineering across AI/ML, full-stack development, blockchain, and autonomous systems - built for production, performance, and measurable impact.
-            </p>
-          </div>
+    <section id="services" className="border-b border-[#2b302b] px-5 py-20 md:px-10 md:py-28">
+      <div className="mx-auto max-w-5xl">
+        <div className="mb-12 max-w-2xl">
+          <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.2em] text-[#d96a46]">What I build</p>
+          <h2 className="font-display text-4xl font-semibold tracking-[-0.05em] text-[#ededed] sm:text-5xl">Systems with a clear job to do.</h2>
+          <p className="mt-5 text-base leading-7 text-[#9ca39b]">From model integrations to field hardware, the work stays close to the user, the constraints, and the outcome.</p>
         </div>
 
-        {/* Accordion / List of Services */}
-        <div className="flex flex-col gap-4 mb-12">
+        <div className="border-t border-[#2b302b]">
           {services.map((service) => {
             const isExpanded = expandedId === service.id;
-            
+            const panelId = `service-panel-${service.id}`;
             return (
-              <div 
-                key={service.id}
-                className="w-full transition-all duration-500 rounded-[24px] overflow-hidden"
-              >
-                {/* Accordion Header */}
+              <div key={service.id} className="border-b border-[#2b302b]">
                 <button
-                  onClick={() => toggleExpand(service.id)}
-                  className={`w-full flex items-center justify-between px-6 sm:px-10 py-6 text-left transition-all duration-500 relative z-10 ${
-                    isExpanded 
-                      ? "bg-brand-dark text-white rounded-t-[24px]" 
-                      : "bg-[#f3f2ee] hover:bg-[#eae8df] text-brand-dark rounded-[24px]"
-                  }`}
+                  type="button"
+                  onClick={() => setExpandedId(isExpanded ? null : service.id)}
+                  className="flex w-full items-center justify-between gap-5 py-6 text-left transition-colors hover:text-[#d96a46]"
+                  aria-expanded={isExpanded}
+                  aria-controls={panelId}
                 >
-                  <div className="flex items-center gap-4 sm:gap-8">
-                    {/* Number */}
-                    <span className={`font-display font-bold text-base sm:text-lg ${
-                      isExpanded ? "text-brand-orange" : "text-[#8c8c8c]"
-                    }`}>
-                      {service.id}.
-                    </span>
-                    {/* Title */}
-                    <span className="font-display font-bold text-lg sm:text-2xl tracking-tight">
-                      {service.title}
-                    </span>
-                  </div>
-
-                  {/* Icon Trigger */}
-                  <div>
-                    {isExpanded ? (
-                      <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-brand-orange flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-transform duration-300">
-                        {/* Custom Red Close Icon with standard X or Arrow */}
-                        <X size={16} className="stroke-[3]" />
-                      </div>
-                    ) : (
-                      <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-brand-dark hover:scale-110 active:scale-95 transition-transform duration-300">
-                        {/* Diagonal arrow indicator */}
-                        <svg className="w-5 h-5 sm:w-6 sm:h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                        </svg>
-                      </div>
-                    )}
-                  </div>
+                  <span className="flex min-w-0 items-baseline gap-5 sm:gap-8">
+                    <span className="font-mono text-xs text-[#d96a46]">{service.id}</span>
+                    <span className="font-display text-xl font-medium tracking-tight text-[#ededed] sm:text-2xl">{service.title}</span>
+                  </span>
+                  <ChevronDown size={18} className={`shrink-0 text-[#9ca39b] transition-transform ${isExpanded ? "rotate-180 text-[#d96a46]" : ""}`} />
                 </button>
 
-                {/* Accordion Body */}
-                <AnimatePresence initial={false}>
-                  {isExpanded && (
-                    <motion.div
-                      initial={{ scaleY: 0, opacity: 0 }}
-                      animate={{ scaleY: 1, opacity: 1 }}
-                      exit={{ scaleY: 0, opacity: 0 }}
-                      style={{ transformOrigin: "top" }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="bg-brand-dark text-white rounded-b-[24px] border-t border-white/5 overflow-hidden"
-                    >
-                      <div className="px-6 sm:px-10 pb-8 pt-4 flex flex-col gap-6">
-                        
-                        {/* Badges / Tags Cloud */}
-                        <div className="flex flex-wrap gap-2">
-                          {service.tags.map((tag) => (
-                            <span 
-                              key={tag}
-                              className="border border-white/20 hover:border-white/50 text-white/80 hover:text-white font-display text-xs px-3.5 py-1.5 rounded-full transition-colors cursor-default"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-
-                        {/* Description */}
-                        <p className="text-white/70 text-sm sm:text-base leading-relaxed max-w-2xl font-sans">
-                          {service.description}
-                        </p>
-
-                        {/* Expanded Mockup Illustration (For Full-Stack or Autonomous Systems) */}
-                        {service.image && (
-                          <div className="mt-4 w-full flex justify-center">
-                            <div className="relative rounded-2xl overflow-hidden shadow-2xl max-w-lg md:max-w-2xl border border-white/10 group">
-                              <img
-                                src={service.image}
-                                alt={`${service.title} Mockup`}
-                                referrerPolicy="no-referrer"
-                                className="w-full h-auto object-cover transform scale-100 group-hover:scale-[1.03] transition-transform duration-700"
-                              />
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                                <span className="text-xs font-mono text-white/80">Interactive Workspace Model</span>
-                              </div>
-                            </div>
-                          </div>
-                        )}
-
-                        {/* Order service CTA inside expanded card */}
-                        <div className="flex justify-end mt-2">
-                          <button
-                            onClick={() => onServiceActionClick(service.title)}
-                            className="text-brand-orange hover:text-white flex items-center gap-2 text-sm font-semibold transition-colors group"
-                          >
-                            <span>Inquire about {service.title}</span>
-                            <ArrowRight size={14} className="transform group-hover:translate-x-1 transition-transform" />
-                          </button>
-                        </div>
-
+                {isExpanded && (
+                  <div id={panelId} className="grid grid-cols-1 gap-8 pb-8 pl-0 sm:grid-cols-[minmax(0,1fr)_220px] sm:pl-16">
+                    <div>
+                      <p className="max-w-2xl text-sm leading-7 text-[#9ca39b]">{service.description}</p>
+                      <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 font-mono text-[10px] uppercase tracking-[0.12em] text-[#ededed]">
+                        {service.tags.map((tag) => <span key={tag}>{tag}</span>)}
                       </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                      <button type="button" onClick={() => onServiceActionClick(service.title)} className="mt-7 inline-flex items-center gap-2 border-b border-[#d96a46] pb-1 font-mono text-[10px] uppercase tracking-[0.14em] text-[#d96a46] hover:text-[#ededed]">
+                        Discuss this service <ArrowUpRight size={14} />
+                      </button>
+                    </div>
+                    {service.image && <ImageWithFallback src={service.image} alt={`${service.title} project preview`} className="aspect-[4/3] w-full border border-[#2b302b] object-cover grayscale" />}
+                  </div>
+                )}
               </div>
             );
           })}
         </div>
 
-        {/* View All Services Button */}
-        <div className="flex justify-center mt-8">
-          <button
-            onClick={() => onServiceActionClick("All Services")}
-            className="bg-[#fd4a24] hover:bg-[#e03d15] text-white font-display font-semibold px-6 py-3.5 rounded-full flex items-center gap-3 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 group"
-          >
-            <span>View All Services</span>
-            <div className="w-7 h-7 rounded-full bg-white flex items-center justify-center text-brand-dark group-hover:rotate-45 transition-transform duration-300 shadow-sm">
-              <ArrowRight size={14} className="stroke-[2.5]" />
-            </div>
-          </button>
-        </div>
-
+        <button type="button" onClick={() => onServiceActionClick("All Services")} className="mt-8 inline-flex items-center gap-2 border-b border-[#9ca39b] pb-1 font-mono text-[10px] uppercase tracking-[0.14em] text-[#9ca39b] hover:border-[#d96a46] hover:text-[#d96a46]">
+          Request a broader scope <ArrowUpRight size={14} />
+        </button>
       </div>
     </section>
   );

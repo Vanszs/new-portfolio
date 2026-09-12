@@ -3,11 +3,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Bevan - Portfolio | AI/ML Engineer & Full-Stack Developer",
-    template: "%s | Bevan - Portfolio"
+    default: "Bevantyo Satria Pinandhita | AI/ML Engineer & Full-Stack Developer",
+    template: "%s | Bevantyo Satria Pinandhita"
   },
   description:
-    "Bevantyo Satria Pinandhita (Bevan) - AI/ML Engineer, Full-Stack & Blockchain Developer, and Autonomous Systems Specialist. Hire for custom web app development, machine learning models, and smart contract solutions.",
+    "Bevantyo Satria Pinandhita - AI/ML Engineer, Full-Stack, Blockchain, and Autonomous Systems specialist portfolio.",
   keywords: [
     "programmer",
     "web developer",
@@ -34,8 +34,8 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Bevan - Portfolio | AI/ML Engineer & Full-Stack Developer",
-    description: "Bevantyo Satria Pinandhita - AI/ML Engineer, Full-Stack & Blockchain Developer, and Autonomous Systems Specialist portfolio.",
+    title: "Bevantyo Satria Pinandhita | AI/ML Engineer & Full-Stack Developer",
+    description: "Bevantyo Satria Pinandhita - AI/ML Engineer, Full-Stack, Blockchain, and Autonomous Systems specialist portfolio.",
     url: "https://bevansatria.my.id",
     siteName: "Bevantyo Satria Pinandhita Portfolio",
     images: [
@@ -51,8 +51,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bevan - Portfolio | AI/ML Engineer & Full-Stack Developer",
-    description: "Bevantyo Satria Pinandhita - AI/ML Engineer, Full-Stack & Blockchain Developer, and Autonomous Systems Specialist portfolio.",
+    title: "Bevantyo Satria Pinandhita | AI/ML Engineer & Full-Stack Developer",
+    description: "Bevantyo Satria Pinandhita - AI/ML Engineer, Full-Stack, Blockchain, and Autonomous Systems specialist portfolio.",
     images: ["/portfolio-updated.png"],
   },
   robots: {

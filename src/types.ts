@@ -1,9 +1,9 @@
 export interface Service {
-  id: string; // e.g., '01', '02'
+  id: string;
   title: string;
   tags: string[];
   description: string;
-  image?: string;
+  image?: string | null;
 }
 
 export interface Testimonial {
@@ -28,5 +28,5 @@ export interface Project {
   image: string;
   tags: string[];
   year: string;
-  description?: string;
+  description: string;
 }
