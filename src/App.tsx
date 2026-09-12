@@ -135,5 +135,60 @@ export default function App({ data }: AppProps) {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isSettingsOpen]);
 
-  return <div className="public-site"><a className="skip-link" href="#main">Skip to content</a><main id="main"><div className="zickrian-shell" id="home"><ProfileHeader /><MainNav activeSection={activeSection} onChat={openChat} onSettings={() => setIsSettingsOpen((value) => !value)} />{isSettingsOpen && <div className="zickrian-settings" role="dialog" aria-label="Settings"><button type="button">EN</button><button type="button">ID</button><button type="button" onClick={() => setIsSettingsOpen(false)} aria-label="Close settings">×</button></div>}<div className="zickrian-content"><p className="zickrian-intro">A few chapters of building, learning, and turning technical curiosity into useful systems.</p><ExperienceList experiences={experiences} /><ProjectsList projects={projects} /><StackSection /><ContributionsSection /><AwardsSection /><PublicationsSection /><CertificationsSection /></div></div></main><ZickrianFooter /><ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} preselectedService={preselectedService} /></div>;
+  return (
+    <div className="public-site">
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
+      <main id="main">
+        <div className="zickrian-shell" id="home">
+          <ProfileHeader />
+          <MainNav
+            activeSection={activeSection}
+            onChat={openChat}
+            onSettings={() => setIsSettingsOpen((value) => !value)}
+          />
+          {isSettingsOpen && (
+            <div className="zickrian-settings" role="dialog" aria-label="Settings">
+              <button type="button">EN</button>
+              <button type="button">ID</button>
+              <button
+                type="button"
+                onClick={() => setIsSettingsOpen(false)}
+                aria-label="Close settings"
+              >
+                ×
+              </button>
+            </div>
+          )}
+          <div className="zickrian-content">
+            <p className="zickrian-intro">
+              A few chapters of building, learning, and turning technical curiosity into useful systems.
+            </p>
+            <div className="zickrian-hatched-bar" aria-hidden="true" />
+            <ExperienceList experiences={experiences} />
+            <div className="zickrian-hatched-bar" aria-hidden="true" />
+            <ProjectsList projects={projects} />
+            <div className="zickrian-hatched-bar" aria-hidden="true" />
+            <StackSection />
+            <div className="zickrian-hatched-bar" aria-hidden="true" />
+            <ContributionsSection />
+            <div className="zickrian-hatched-bar" aria-hidden="true" />
+            <AwardsSection />
+            <div className="zickrian-hatched-bar" aria-hidden="true" />
+            <PublicationsSection />
+            <div className="zickrian-hatched-bar" aria-hidden="true" />
+            <CertificationsSection />
+            <div className="zickrian-hatched-bar" aria-hidden="true" />
+          </div>
+        </div>
+      </main>
+      <ZickrianFooter />
+      <ContactModal
+        isOpen={isContactOpen}
+        onClose={() => setIsContactOpen(false)}
+        preselectedService={preselectedService}
+      />
+    </div>
+  );
 }

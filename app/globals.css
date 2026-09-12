@@ -59,6 +59,11 @@ img { display: block; max-width: 100%; }
 .zickrian-settings button { padding: 3px 8px; border: 1px solid var(--z-line); border-radius: 4px; background: transparent; color: var(--z-muted); font-size: 12px; cursor: pointer; }
 .zickrian-settings button:hover { color: var(--z-text); border-color: #686872; }
 .zickrian-intro { display: none; position: absolute; top: 687px; left: calc(50% - 520px); width: 160px; margin: 0; color: var(--z-muted); font-family: Caveat, cursive; font-size: 19px; line-height: 24px; text-align: right; }
+.zickrian-hatched-bar { position: relative; z-index: 1; margin-top: -1px; display: flex; height: 32px; width: 100%; border: 1px solid var(--z-line); background-color: var(--z-card); background-image: repeating-linear-gradient(135deg, var(--z-line) 0, var(--z-line) 1px, transparent 1px, transparent 8px); }
+@media (max-width: 767px) {
+  .zickrian-hatched-bar { border-left: 0; border-right: 0; }
+}
+
 .zickrian-section { scroll-margin-top: 70px; border-bottom: 1px solid var(--z-line); }
 .zickrian-section-title { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; min-height: 37px; padding: 4px 16px 3px; }
 .zickrian-section-title h2 { margin: 0; color: var(--z-text); font-family: Caveat, "Caveat Fallback", cursive; font-size: 30px; line-height: 36px; font-weight: 600; letter-spacing: -.02em; }
@@ -124,17 +129,24 @@ img { display: block; max-width: 100%; }
 @media (max-width: 639px) {
   .zickrian-stack-guide { display: none; }
 }
-.zickrian-contributions { border-bottom: 1px solid var(--z-line); }
-.zickrian-contributions h2 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
-.zickrian-contribution-box { padding: 16px; }
-.zickrian-contribution-grid { display: grid; grid-template-columns: repeat(26, 1fr); grid-auto-rows: 9px; gap: 3px; }
-.zickrian-contribution-grid i, .zickrian-contribution-footer i { display: block; width: 9px; height: 9px; border-radius: 2px; background: #202024; }
-.zickrian-contribution-grid .level-1, .zickrian-contribution-footer .level-1 { background: #193d2b; }
-.zickrian-contribution-grid .level-2, .zickrian-contribution-footer .level-2 { background: #287c4b; }
-.zickrian-contribution-grid .level-3 { background: #45b96d; }
-.zickrian-contribution-grid .level-4, .zickrian-contribution-footer .level-4 { background: #74d994; }
-.zickrian-contribution-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 14px; color: var(--z-muted); font-size: 12px; }
-.zickrian-contribution-footer a, .zickrian-contribution-footer span { display: inline-flex; align-items: center; gap: 6px; }
+/* 1:1 GitHub Contributions matching zickrian.dev */
+.zickrian-gh-wrap { padding: 16px 0; display: flex; flex-direction: column; gap: 16px; width: 100%; min-width: 0; }
+.zickrian-gh-chart-scroll { width: 100%; overflow-x: auto; padding: 0 16px; }
+.zickrian-gh-chart { min-width: 680px; display: flex; flex-direction: column; gap: 8px; }
+.zickrian-gh-months { display: flex; justify-content: space-between; font-family: "GeistMono", monospace; font-size: 11px; color: var(--z-muted); padding-left: 2px; }
+.zickrian-gh-grid { display: flex; gap: 3px; }
+.zickrian-gh-col { display: flex; flex-direction: column; gap: 3px; }
+.zickrian-gh-cell { width: 10px; height: 10px; border-radius: 2px; }
+.zickrian-gh-cell[data-level="0"] { background: rgba(161,161,170,.05); }
+.zickrian-gh-cell[data-level="1"] { background: rgba(161,161,170,.20); }
+.zickrian-gh-cell[data-level="2"] { background: rgba(161,161,170,.40); }
+.zickrian-gh-cell[data-level="3"] { background: rgba(161,161,170,.60); }
+.zickrian-gh-cell[data-level="4"] { background: rgba(161,161,170,.80); }
+
+.zickrian-gh-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 0 16px; font-size: 13px; color: var(--z-muted); }
+.zickrian-gh-link { color: var(--z-text); text-decoration: underline; text-underline-offset: 3px; }
+.zickrian-gh-legend { display: flex; align-items: center; gap: 4px; font-size: 12px; }
+.zickrian-gh-legend span { margin: 0 4px; }
 .zickrian-award, .zickrian-publication, .zickrian-certification { position: relative; display: block; border-top: 1px solid var(--z-line); }
 .zickrian-award { padding: 16px 44px 16px 16px; }
 .zickrian-award h3, .zickrian-certification h3 { margin: 0 0 10px; color: var(--z-text); font-size: 16px; line-height: 22px; font-weight: 500; }
