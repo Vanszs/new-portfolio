@@ -9,6 +9,7 @@ export interface ZickrianExperience {
   logo?: string | null;
   tags: string[];
   description: string;
+  bullets?: string[];
 }
 
 export interface ZickrianProject {

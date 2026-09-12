@@ -15,6 +15,11 @@ const fallback: ZickrianExperience[] = [
     logo: null,
     tags: ["Next.js", "Generative AI", "Prisma", "CI/CD"],
     description: "Developing Owie Motion across frontend, backend, and infrastructure workflows.",
+    bullets: [
+      "Integrated Generative AI features and automation pipelines into core web applications.",
+      "Assisted backend architecture, database schema design, and high-availability server management.",
+      "Designed robust CI/CD pipelines to ensure scalable, continuous, and reliable delivery."
+    ]
   },
   {
     id: "nasdem",
@@ -27,6 +32,11 @@ const fallback: ZickrianExperience[] = [
     logo: null,
     tags: ["Next.js", "RBAC", "Redis", "Cloudflare"],
     description: "Engineered a secure admin panel with election data aggregation, CRUD operations, RBAC, and Redis background jobs.",
+    bullets: [
+      "Reduced development timeline by 40% utilizing AI-assisted prototyping tools for rapid landing page iteration.",
+      "Engineered a secure custom admin panel with real-time election data aggregation and role-based access control.",
+      "Implemented a Redis-backed background job queue on VPS infrastructure fronted by Cloudflare."
+    ]
   },
   {
     id: "venimee",
@@ -39,6 +49,11 @@ const fallback: ZickrianExperience[] = [
     logo: null,
     tags: ["Discord", "Community Management", "Partnerships"],
     description: "Scaled a Discord-based community, trained moderators, and directed strategic partnerships.",
+    bullets: [
+      "Initiated and organically scaled a creator community from zero to thousands of active members.",
+      "Recruited, structured, and trained a dedicated moderator staff with clear accountability workflows.",
+      "Directed strategic partnerships, daily governance, and long-term community engagement initiatives."
+    ]
   },
   {
     id: "pimnas",
@@ -51,6 +66,11 @@ const fallback: ZickrianExperience[] = [
     logo: null,
     tags: ["ROS2", "MAVLink", "Next.js", "AI Agent"],
     description: "Engineered a complete autonomous drone system with path planning, collision avoidance, and monitoring dashboard.",
+    bullets: [
+      "Engineered and configured the complete autonomous drone software architecture on ROS2.",
+      "Implemented PSO (Particle Swarm Optimization) and ORCA algorithms for package delivery collision avoidance.",
+      "Built and deployed a real-time Next.js telemetry and flight control monitoring dashboard."
+    ]
   },
   {
     id: "krti",
@@ -63,6 +83,11 @@ const fallback: ZickrianExperience[] = [
     logo: null,
     tags: ["ROS2", "Jetson Nano", "MAVLink", "Sensor Fusion"],
     description: "Designed an end-to-end autonomous VTOL drone system using ROS2, MAVLink, and multi-sensor fusion.",
+    bullets: [
+      "Architected end-to-end flight software on Ubuntu/ROS2 Foxy running on an embedded Jetson Nano.",
+      "Integrated MAVLink protocol communication and tuned PID controllers for vertical-to-forward transitions.",
+      "Engineered multi-sensor fusion combining ultrasonic rangefinders, magnetometers, and vision cameras."
+    ]
   },
   {
     id: "blockhood",
@@ -75,6 +100,11 @@ const fallback: ZickrianExperience[] = [
     logo: null,
     tags: ["Web3", "Community Growth", "Leadership"],
     description: "Founded and expanded a Web3 community while leading developer operations and partnerships.",
+    bullets: [
+      "Founded BlockHood Web3 ecosystem and accelerated organic developer adoption across regional universities.",
+      "Forged key technical partnerships with leading Layer-1 and Layer-2 blockchain protocols.",
+      "Organized developer workshops, hackathons, and technical bootcamps for emerging builders."
+    ]
   },
   {
     id: "surabaya",
@@ -87,6 +117,11 @@ const fallback: ZickrianExperience[] = [
     logo: null,
     tags: ["Flutter", "Riverpod", "Socket.IO", "Offline-First"],
     description: "Built two offline-first Flutter applications with real-time synchronization for city government.",
+    bullets: [
+      "Built two cross-platform Flutter applications (citizen & field officer) in an intensive 2-week sprint.",
+      "Architected an offline-first local cache engine powered by Riverpod and SQLite.",
+      "Integrated Socket.IO and REST APIs for instant push sync, reducing data latency by 60%."
+    ]
   },
 ];
 
@@ -192,7 +227,15 @@ export default function ExperienceList({ experiences }: { experiences?: Zickrian
                   {/* Expanded detail */}
                   {isOpen && (
                     <div className="zickrian-exp-dropdown">
-                      <p className="zickrian-exp-desc">{item.description}</p>
+                      {item.bullets && item.bullets.length > 0 ? (
+                        <ul className="zickrian-exp-bullets">
+                          {item.bullets.map((bullet, idx) => (
+                            <li key={idx}>{bullet}</li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p className="zickrian-exp-desc">{item.description}</p>
+                      )}
                       <div className="zickrian-tags">
                         {item.tags.map((tag) => (
                           <span key={tag}>{tag}</span>
