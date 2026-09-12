@@ -13,7 +13,7 @@ const socials: Array<SocialLink & { icon: typeof GithubIcon }> = [
 
 export default function ProfileHeader() {
   return (
-    <header className="zickrian-profile">
+    <header id="about" className="zickrian-profile">
       <div className="zickrian-banner">
         <ImageWithFallback src="/images/zickrian/bannerfield.webp" alt="Profile Banner" width={1440} height={810} />
         <span className="zickrian-scanlines" aria-hidden="true" />
